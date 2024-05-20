@@ -1,16 +1,17 @@
 <?php
 
 	require_once '../src/Router.php';
-	require_once '../src/Controllers/HomeController.php';
-	require_once '../src/Controllers/AboutController.php';
+	require_once '../src/Controllers/ApiController.php';
 
 	$router = new Router();
 
 	// Define routes
-	$router->add('/', 'HomeController@index');
-	$router->add('/about', 'AboutController@index');
+	$router->add('GET', '/', 'ApiController@getString');
+	$router->add('GET', '/test', 'ApiController@getJson');
 
 	// run the router
-	$router->dispatch($_SERVER['REQUEST_URI']);
+	$method = $_SERVER['REQUEST_METHOD'];
+	$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+	echo $router->dispatch($method, $uri);
 
 ?>

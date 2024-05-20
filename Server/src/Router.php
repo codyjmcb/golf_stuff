@@ -4,31 +4,29 @@
 	{
 		private $routes = [];
 
-		public function add($uri, $controllerAction)
+		public function add($method, $route, $handler)
 		{
-			$this->routes[$uri] = $controllerAction;
+			$this->routes[] = [
+				'method' => $method,
+				'route' => $route,
+				'handler' => $handler,
+			];
 		}
 
-		public function dispatch($uri)
+		public function dispatch($method, $uri)
 		{
-			if(array_key_exists($uri, $this->routes))
+			foreach ($this->routes as $route)
 			{
-				list($controller, $action) = explode('@', $this->routes[$uri]);
-
-				if(class_exists($controller) && method_exists($controller, $action))
+				if($route['method'] === $method && $route['route'] === $uri)
 				{
+					$handler = $route['handler'];
+					list($controller, $action) = explode('@', $handler);
+					$controller = "App\\Controller\\$controller";
 					$controllerInstance = new $controller();
-					$controllerInstance->$action();
-				}
-				else
-				{
-					$this->send404();
+					return $controllerInstance->$action();
 				}
 			}
-			else
-			{
-				$this->send404();
-			}
+			return $this->send404();
 		}
 
 		public function send404()
