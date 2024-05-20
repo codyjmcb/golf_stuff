@@ -14,9 +14,12 @@
 	$router->add('GET', '/golfers', 'GolferController@getGolfers');
 	$router->add('GET', '/golfer', 'GolferController@getGolfer');
 
+	$router->add('POST', '/golfer', 'GolferController@addGolfer');
+	$router->add('PUT', '/golfer', 'GolferController@updateGolfer');
+	$router->add('DELETE', '/golfer', 'GolferController@deleteGolfer');
+
 	// run the router
 	$method = $_SERVER['REQUEST_METHOD'];
 	$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 	echo $router->dispatch($method, $uri);
-
 ?>
