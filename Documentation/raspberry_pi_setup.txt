@@ -1,0 +1,57 @@
+/*
+FILE: raspberry_pi_setup.txt
+NOTES: This file steps through how to configure a raspberry pi for a server/database from scratch
+DATE: 05/19/2024
+TIME: 23:00
+AUTHOR: Cody J. McBride
+EMAIL: cody.j.mcbride@gmail.com
+REVISON: 0.1
+HISTORY:
+	[0.1] Initial Version
+*/
+
+Requirements:
+	MicroSD Card (>= 32GB)
+	Capability to flash MicroSD Card (personal computer ??)
+	Raspberry Pi
+	Raspberry Pi Power Supply (5V 3A)
+	Display / Cable
+	Keyboard / Mouse
+
+Steps:
+	Download latest software from raspberrypi.com/software
+	Run the installer
+	Connect the MicroSD card and format according to default settings
+	Run Raspbery Pi Imager
+		Select your board (I'm using 4B ?? GB RAM)
+		Select your OS (I'm using Ubuntu Server 24.04)
+		Flash the MicroSD card
+			I'm using the custom settings:
+				HostName: golfserver.local
+				Username: golfapp
+				Password: golfapp
+				SSID: Sweet
+	Wait for MicroSD card to finish writing
+	Install the MicroSD card into the Raspberry Pi
+	Connect accessories to Raspberry Pi
+	Power Raspberry Pi on
+	Allow Raspberry Pi sufficient time to boot (several minutes)
+	Log into the Raspberry Pi using the above configured Username/Password
+	Identify the ip address assigned to the Raspberry Pi
+		enter the command: hostname -I
+	Ping the ip address from another machine on the network
+		Verify that the ping succeeds
+
+//Install / Set up WebApp packages
+	sudo apt update
+	sudo apt install apache2
+	sudo ufw allow 'Apache'
+	Navigate to the ip address of the pi
+		should get Apache2 default page
+	
+	
+	
+				
+	
+
+	
