@@ -1,0 +1,53 @@
+/*
+FILE  				: api_info.txt
+AUTHOR				: Cody J. McBride
+AUTHOR CONTACT		: cody.j.mcbride@gmail.com
+AUTHOR PHONE		: 603-289-1113
+DATE				: 05/20/2024 (15:20)
+REVISION			: Rev. 0.1
+REVISION DETAILS
+	Rev. 0.1		: Initial Release
+
+NOTES ABOUT THIS DOCUMENT	
+    This document serves as a reference to available routes and expected data in the [PHP Server]
+    Angle Brackets are used to describe data that the user will be required to enter themselves ... Ex. <ip address> is a stand-in for the ip address of the server
+    Square Brackets are used to provide a reference to non-permanent names ... Ex. [PHP Server] describes the current name of the server to be renamed at a later date
+    Double quotes denote string literals ... Ex. "Hello World" denotes the string literal Hello World.
+    Curly Brackets are used to denote database objects as they exist, usually precursed by a describing keyword ... Ex. "... returns all rows in the table{first_table}" in this example,
+        table denotes the object type, and {first_table} is used to show the name of the table is "first_table" 
+    Uppercase words and phrases are used to denote keywords ... Ex. "GET" refers to the HTTP Verb GET
+*/
+
+Current Routes:
+
+GET Routes
+
+	GET <ip address>
+	GET <ip address>/
+    GET <ip address>/home
+		This route returns "Hello World"
+
+    GET <ip address>/test
+        This route returns a JSON object as: ["message" : "Hello, this is a JSON response!"]
+
+	GET <ip address>/about
+		This route returns "Welcome to about"
+
+	GET <ip address>/golfers
+		This route returns the string "This will become a list of all golfers"
+
+	GET <ip address>/golfer
+		*note* this route requires HTTP Headers to be added to the request with the format "<"golferId">:<id>"
+		This route returns the string "Hello, golfer id is [golferId]"
+
+POST Routes
+    POST <ip address>/golfer
+    This route returns the string "Add Golfer"
+
+PUT Routes
+    PUT <ip address>/golfer
+    This route returns the string "Update Golfer"
+
+DELETE Routes
+    DELETE <ip address>/golfer
+    This route returns the string "Delete Golfer"
