@@ -7,8 +7,10 @@
 	$router = new Router();
 
 	// Define routes
-	$router->add('GET', '/', 'ApiController@getString');
+	$router->add('GET', '/', 'ApiController@getHome');
+	$router->add('GET', '/home', 'ApiController@getHome');
 	$router->add('GET', '/test', 'ApiController@getJson');
+	$router->add('GET', '/about', 'ApiController@getAbout');
 	$router->add('GET', '/golfers', 'GolferController@getGolfers');
 	$router->add('GET', '/golfer', 'GolferController@getGolfer');
 
