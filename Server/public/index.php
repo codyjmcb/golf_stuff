@@ -2,12 +2,15 @@
 
 	require_once '../src/Router.php';
 	require_once '../src/Controllers/ApiController.php';
+	require_once '../src/Controllers/GolferController.php';
 
 	$router = new Router();
 
 	// Define routes
 	$router->add('GET', '/', 'ApiController@getString');
 	$router->add('GET', '/test', 'ApiController@getJson');
+	$router->add('GET', '/golfers', 'GolferController@getGolfers');
+	$router->add('GET', '/golfer', 'GolferController@getGolfer');
 
 	// run the router
 	$method = $_SERVER['REQUEST_METHOD'];
