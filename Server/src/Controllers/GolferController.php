@@ -24,6 +24,20 @@
 				return "Failed to fetch golfer id";
 			}
 		}
-	}
 
+		public function addGolfer()
+		{
+			return "Add Golfer";
+		}
+
+		public function updateGolfer()
+		{
+			return "Update Golfer";
+		}
+
+		public function deleteGolfer()
+		{
+			return "Delete Golfer";
+		}
+	}
 ?>
