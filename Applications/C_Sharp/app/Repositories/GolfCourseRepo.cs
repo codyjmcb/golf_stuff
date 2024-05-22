@@ -1,18 +1,20 @@
-﻿using DataModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading.Tasks;
+
+using DataModels;
 
 namespace Repositories
 {
-    public class GolfersRepo : IRepository<Golfer>
+    public class GolfCourseRepo : IRepository<GolfCourse>
     {
-        const string ipAddress = "http://10.0.0.99/golfer";
+        public const string ipAddress = "http://10.0.0.99/golfcourse";
 
-        public bool Add(Golfer x)
+        public bool Add(GolfCourse x)
         {
             HttpWebRequest webRequest;
 
@@ -24,9 +26,8 @@ namespace Repositories
 
             using (var streamWriter = new StreamWriter(webRequest.GetRequestStream()))
             {
-                string json = "{\"golferId\":\"" + x._golferID + "\",\"firstName\":\"" + x._firstName +
-                    "\",\"middleInitial\":\"" + x._middleInitial + "\",\"lastName\":\"" + x._lastName + "\",\"handicap\":\"" +
-                    x._handicap + "\"}";
+                string json = "{\"courseID\":\"" + x._courseID + "\",\"courseName\":\"" + x._courseName +
+                       "\",\"numTees\":\"" + x._numTees + "\",\"par\":\"" + x._par + "\"}";
 
                 streamWriter.Write(json);
             }
@@ -54,34 +55,7 @@ namespace Repositories
 
             webRequest.Method = "DELETE";
             webRequest.Headers.Clear();
-            webRequest.Headers.Add("golferId:" + id);
-
-            using (WebResponse response = webRequest.GetResponse())
-            {
-                using (Stream responseStream = response.GetResponseStream())
-                {
-                    StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
-                    string jsonReturned = reader.ReadToEnd();
-
-                    if (jsonReturned == "Success")
-                    {
-                        return true;
-                    }
-                }
-            }
-
-            return false;
-        }
-
-        public Golfer Find(string id)
-        {
-            HttpWebRequest webRequest;
-
-            webRequest = (HttpWebRequest)WebRequest.Create(ipAddress);
-
-            webRequest.Method = "GET";
-            webRequest.Headers.Clear();
-            webRequest.Headers.Add("golferId:" + id);
+            webRequest.Headers.Add("courseID:" + id);
 
             using (WebResponse response = webRequest.GetResponse())
             {
@@ -93,14 +67,44 @@ namespace Repositories
                     jsonReturned = jsonReturned.Replace("[", "");
                     jsonReturned = jsonReturned.Replace("]", "");
 
-                    List<Golfer> parsed = JsonExtensions.FromDelimitedJson<Golfer>(new StringReader(jsonReturned)).ToList();
+                    if (jsonReturned == "Success")
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        public GolfCourse Find(string id)
+        {
+            HttpWebRequest webRequest;
+
+            webRequest = (HttpWebRequest)WebRequest.Create(ipAddress); //plural form
+
+            webRequest.Method = "GET";
+            webRequest.Headers.Clear();
+            webRequest.Headers.Add("courseID:" + id);
+
+            using (WebResponse response = webRequest.GetResponse())
+            {
+                using (Stream responseStream = response.GetResponseStream())
+                {
+                    StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
+                    string jsonReturned = reader.ReadToEnd();
+
+                    jsonReturned = jsonReturned.Replace("[", "");
+                    jsonReturned = jsonReturned.Replace("]", "");
+
+                    List<GolfCourse> parsed = JsonExtensions.FromDelimitedJson<GolfCourse>(new StringReader(jsonReturned)).ToList();
 
                     return parsed[0];
                 }
             }
         }
 
-        public IList<Golfer> FindAll()
+        public IList<GolfCourse> FindAll()
         {
             HttpWebRequest webRequest;
 
@@ -118,14 +122,14 @@ namespace Repositories
                     jsonReturned = jsonReturned.Replace("[", "");
                     jsonReturned = jsonReturned.Replace("]", "");
 
-                    List<Golfer> parsed = JsonExtensions.FromDelimitedJson<Golfer>(new StringReader(jsonReturned)).ToList();
+                    List<GolfCourse> parsed = JsonExtensions.FromDelimitedJson<GolfCourse>(new StringReader(jsonReturned)).ToList();
 
                     return parsed;
                 }
             }
         }
 
-        public bool Update(Golfer x)
+        public bool Update(GolfCourse x)
         {
             HttpWebRequest webRequest;
 
@@ -137,9 +141,8 @@ namespace Repositories
 
             using (var streamWriter = new StreamWriter(webRequest.GetRequestStream()))
             {
-                string json = "{\"golferId\":\"" + x._golferID + "\",\"firstName\":\"" + x._firstName +
-                    "\",\"middleInitial\":\"" + x._middleInitial + "\",\"lastName\":\"" + x._lastName + "\",\"handicap\":\"" +
-                    x._handicap + "\"}";
+                string json = "{\"courseID\":\"" + x._courseID + "\",\"courseName\":\"" + x._courseName +
+    "                   \",\"numTees\":\"" + x._numTees + "\",\"par\":\"" + x._par + "\"}";
 
                 streamWriter.Write(json);
             }

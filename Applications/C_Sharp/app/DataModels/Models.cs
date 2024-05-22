@@ -41,4 +41,27 @@
         }
     }
 
+    public class GolfCourse
+    {
+        public string _courseID { get; set; }
+
+        public string _courseName { get; set; }
+
+        public byte _numTees { get; set; }
+
+        public byte _par { get; set; }
+
+        public GolfCourse(string courseID, string courseName, byte numTees, byte par)
+        {
+            _courseID = courseID;
+            _courseName = courseName;
+            _numTees = numTees;
+            _par = par;
+        }
+
+        public override string ToString()
+        {
+            return _courseName;
+        }
+    }
 }

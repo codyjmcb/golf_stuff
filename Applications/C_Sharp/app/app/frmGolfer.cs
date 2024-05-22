@@ -21,7 +21,7 @@ namespace app
         {
             InitializeComponent();
 
-            db_Service = new Service(new GolfersRepo(), new ClubTypeRepo());
+            db_Service = new Service(new GolferRepo(), new ClubTypeRepo(), new GolfCourseRepo());
         }
 
         private void btnAddGolfer_Click(object sender, EventArgs e)
@@ -198,9 +198,7 @@ namespace app
         {
             if (txtClubUniqueId.Text.Length != 0)
             {
-                ClubType c = new ClubType(byte.Parse(txtClubUniqueId.Text), "doesn't matter");
-
-                if (db_Service.DeleteClubType(c._uniqueID.ToString()))
+                if (db_Service.DeleteClubType(txtClubUniqueId.Text))
                 {
                     MessageBox.Show("Successfully Deleted Club Type");
                     btnGetClubTypes_Click(sender, e);
@@ -223,6 +221,89 @@ namespace app
                 ClubType c = (ClubType)lstClubType.SelectedItem;
                 txtClubUniqueId.Text = c._uniqueID.ToString();
                 txtClubName.Text = c._clubName;
+            }
+        }
+
+        private void btnGetCourses_Click(object sender, EventArgs e)
+        {
+            lstCourses.Items.Clear();
+            foreach (GolfCourse gc in db_Service.FindAllCourses())
+            {
+                lstCourses.Items.Add(gc);
+            }
+        }
+
+        private void btnAddCourse_Click(object sender, EventArgs e)
+        {
+            if (txtCourseID.Text.Length != 0)
+            {
+                GolfCourse gc = new GolfCourse(txtCourseID.Text, txtCourseName.Text, byte.Parse(txtNumTees.Text), byte.Parse(txtPar.Text));
+                if (db_Service.AddCourse(gc))
+                {
+                    MessageBox.Show("Successfully Added golf course");
+                    btnGetCourses_Click(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show("Failed to add golf course");
+                }
+            }
+            else
+            {
+                MessageBox.Show("No golf course Entered");
+            }
+        }
+
+        private void btnUpdateCourse_Click(object sender, EventArgs e)
+        {
+            if (txtCourseID.Text.Length != 0)
+            {
+                GolfCourse gc = new GolfCourse(txtCourseID.Text, txtCourseName.Text, byte.Parse(txtNumTees.Text), byte.Parse(txtPar.Text));
+                if (db_Service.UpdateCourse(gc))
+                {
+                    MessageBox.Show("Successfully Added Golf Course");
+                    btnGetCourses_Click(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show("Failed to add golf course");
+                }
+            }
+            else
+            {
+                MessageBox.Show("No golf course Entered");
+            }
+        }
+
+        private void btnDeleteCourse_Click(object sender, EventArgs e)
+        {
+            if (txtCourseID.Text.Length != 0)
+            {
+                if (db_Service.DeleteCourse(txtCourseID.Text))
+                {
+                    MessageBox.Show("Successfully Deleted golf course");
+                    btnGetCourses_Click(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show("Failed to delete golf course");
+                }
+            }
+            else
+            {
+                MessageBox.Show("No golf course selected");
+            }
+        }
+
+        private void lstCourses_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(lstCourses.SelectedItems.Count == 1)
+            {
+                GolfCourse gc = (GolfCourse)lstCourses.SelectedItem;
+                txtCourseID.Text = gc._courseID;
+                txtCourseName.Text = gc._courseName;
+                txtNumTees.Text = gc._numTees.ToString();
+                txtPar.Text = gc._par.ToString();
             }
         }
     }
