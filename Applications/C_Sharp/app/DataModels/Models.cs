@@ -22,4 +22,23 @@
             return $"{_firstName} {_middleInitial} {_lastName}\r\n";
         }
     }
+
+    public class ClubType
+    {
+        public byte _uniqueID { get; set; }
+
+        public string _clubName { get; set; }
+
+        public ClubType(byte uniqueID, string clubName)
+        {
+            _uniqueID = uniqueID;
+            _clubName = clubName;
+        }
+
+        public override string ToString()
+        {
+            return _clubName;
+        }
+    }
+
 }
