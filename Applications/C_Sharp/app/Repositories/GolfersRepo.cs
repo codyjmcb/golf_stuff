@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Text;
 
@@ -23,7 +24,7 @@ namespace Repositories
 
             using (var streamWriter = new StreamWriter(webRequest.GetRequestStream()))
             {
-                string json = "{\"golferID\":\"" + x._golferID + "\",\"firstName\":\"" + x._firstName +
+                string json = "{\"golferId\":\"" + x._golferID + "\",\"firstName\":\"" + x._firstName +
                     "\",\"middleInitial\":\"" + x._middleInitial + "\",\"lastName\":\"" + x._lastName + "\",\"handicap\":\"" +
                     x._handicap + "\"}";
 
@@ -36,7 +37,7 @@ namespace Repositories
             {
                 var responseString = reader.ReadToEnd();
 
-                if (responseString == "Add Golfer")
+                if (responseString == "Success")
                 {
                     return true;
                 }
@@ -53,7 +54,7 @@ namespace Repositories
 
             webRequest.Method = "DELETE";
             webRequest.Headers.Clear();
-            webRequest.Headers.Add("golferID:" + id);
+            webRequest.Headers.Add("golferId:" + id);
 
             using (WebResponse response = webRequest.GetResponse())
             {
@@ -62,10 +63,7 @@ namespace Repositories
                     StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
                     string jsonReturned = reader.ReadToEnd();
 
-                    jsonReturned = jsonReturned.Replace("[", "");
-                    jsonReturned = jsonReturned.Replace("]", "");
-
-                    if (jsonReturned == "Delete Golfer")
+                    if (jsonReturned == "Success")
                     {
                         return true;
                     }
@@ -92,9 +90,12 @@ namespace Repositories
                     StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
                     string jsonReturned = reader.ReadToEnd();
 
-                    Golfer ret = new Golfer(null, null, 'z', null, 0);
-                    ret._golferID = jsonReturned;
-                    return ret;
+                    jsonReturned = jsonReturned.Replace("[", "");
+                    jsonReturned = jsonReturned.Replace("]", "");
+
+                    List<Golfer> parsed = JsonExtensions.FromDelimitedJson<Golfer>(new StringReader(jsonReturned)).ToList();
+
+                    return parsed[0];
                 }
             }
         }
@@ -117,9 +118,7 @@ namespace Repositories
                     jsonReturned = jsonReturned.Replace("[", "");
                     jsonReturned = jsonReturned.Replace("]", "");
 
-                    List<Golfer> parsed = new List<Golfer>();
-                    parsed.Add(new Golfer("12345", "Cody", 'J', "McBride", 0));
-                    parsed.Add(new Golfer("67890", "Cody", 'J', "McBride", 0));
+                    List<Golfer> parsed = JsonExtensions.FromDelimitedJson<Golfer>(new StringReader(jsonReturned)).ToList();
 
                     return parsed;
                 }
@@ -138,7 +137,7 @@ namespace Repositories
 
             using (var streamWriter = new StreamWriter(webRequest.GetRequestStream()))
             {
-                string json = "{\"golferID\":\"" + x._golferID + "\",\"firstName\":\"" + x._firstName +
+                string json = "{\"golferId\":\"" + x._golferID + "\",\"firstName\":\"" + x._firstName +
                     "\",\"middleInitial\":\"" + x._middleInitial + "\",\"lastName\":\"" + x._lastName + "\",\"handicap\":\"" +
                     x._handicap + "\"}";
 
@@ -151,7 +150,7 @@ namespace Repositories
             {
                 var responseString = reader.ReadToEnd();
 
-                if (responseString == "Update Golfer")
+                if (responseString == "Success")
                 {
                     return true;
                 }

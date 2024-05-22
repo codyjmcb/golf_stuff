@@ -19,7 +19,7 @@
 
         public override string ToString()
         {
-            return _firstName + " " + _lastName;
+            return $"{_firstName} {_middleInitial} {_lastName}\r\n";
         }
     }
 }
