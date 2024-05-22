@@ -5,6 +5,7 @@
 	require_once '../src/Controllers/GolferController.php';
 	require_once '../src/Controllers/ClubTypeController.php';
 	require_once '../src/Controllers/GolfCourseController.php';
+	require_once '../src/Controllers/TeeInformationController.php';
 
 	$router = new Router();
 
@@ -21,21 +22,26 @@
 	$router->add('GET', '/clubtype', 'ClubTypeController@getClubType');
 	$router->add('GET', '/golfcourses', 'GolfCourseController@getGolfCourses');
 	$router->add('GET', '/golfcourse', 'GolfCourseController@getGolfCourse');
+	$router->add('GET', '/teeinformations', 'TeeInformationController@getTeeInformations');
+	$router->add('GET', '/teeinformation', 'TeeInformationController@getTeeInformation');
 
 	// POST ROUTES
 	$router->add('POST', '/golfer', 'GolferController@addGolfer');
 	$router->add('POST', '/clubtype', 'ClubTypeController@addClubType');
 	$router->add('POST', '/golfcourse', 'GolfCourseController@addGolfCourse');
+	$router->add('POST', '/teeinformation', 'TeeInformationController@addTeeInformation');
 	
 	// PUT ROUTES
 	$router->add('PUT', '/golfer', 'GolferController@updateGolfer');
 	$router->add('PUT', '/clubtype', 'ClubTypeController@updateClubType');
 	$router->add('PUT', '/golfcourse', 'GolfCourseController@updateGolfCourse');
+	$router->add('PUT', '/teeinformation', 'TeeInformationController@updateTeeInformation');
 
 	// DELETE ROUTES
 	$router->add('DELETE', '/golfer', 'GolferController@deleteGolfer');
 	$router->add('DELETE', '/clubtype', 'ClubTypeController@deleteClubType');
 	$router->add('DELETE', '/golfcourse', 'GolfCourseController@deleteGolfCourse');
+	$router->add('DELETE', '/teeinformation', 'TeeInformationController@deleteTeeInformation');
 
 	// run the router
 	$method = $_SERVER['REQUEST_METHOD'];
