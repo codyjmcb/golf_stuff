@@ -10,81 +10,59 @@ namespace ServiceBus
         IRepository<Golfer> _golferRepo;
         IRepository<ClubType> _clubTypeRepo;
         IRepository<GolfCourse> _courseRepo;
+        IItemsForRepository<TeeInformation, GolfCourse> _teeInformationRepo;
 
-        public Service(IRepository<Golfer> golferRepo, IRepository<ClubType> clubTypeRepo, IRepository<GolfCourse> courseRepo)
+        public Service(
+            IRepository<Golfer> golferRepo,
+            IRepository<ClubType> clubTypeRepo,
+            IRepository<GolfCourse> courseRepo,
+            IItemsForRepository<TeeInformation, GolfCourse> teeInformationRepo
+            )
         {
             _golferRepo = golferRepo;
             _clubTypeRepo = clubTypeRepo;
             _courseRepo = courseRepo;
+            _teeInformationRepo = teeInformationRepo;
         }
 
         public List<Golfer> FindAllGolfers()
         {
-            List<Golfer> golferList = (List<Golfer>)_golferRepo.FindAll();
-
-            return golferList;
+            return (List<Golfer>)_golferRepo.FindAll();
         }
 
         public Golfer FindGolfer(string id)
         {
-            Golfer golfer = _golferRepo.Find(id);
-
-            return golfer;
+            return _golferRepo.Find(id);
         }
 
         public bool DeleteGolfer(string id)
         {
-            if (_golferRepo.Delete(id))
-            {
-                return true;
-            }
-
-            return false;
+            return _golferRepo.Delete(id);
         }
 
         public bool AddGolfer(Golfer x)
         {
-            if (_golferRepo.Add(x))
-            {
-                return true;
-            }
-
-            return false;
+            return _golferRepo.Add(x);
         }
 
         public bool UpdateGolfer(Golfer x)
         {
-            if (_golferRepo.Update(x))
-            {
-                return true;
-            }
-
-            return false;
+            return _golferRepo.Update(x);
         }
 
         public List<ClubType> FindAllClubTypes()
         {
-            List<ClubType> clubTypesList = (List<ClubType>)_clubTypeRepo.FindAll();
-
-            return clubTypesList;
+            return (List<ClubType>)_clubTypeRepo.FindAll();
         }
 
         public bool UpdateClubType(ClubType x)
         {
-            if (_clubTypeRepo.Update(x))
-            {
-                return true;
-            }
-            return false;
+            return _clubTypeRepo.Update(x);
         }
 
         public bool AddClubType(ClubType x)
         {
-            if (_clubTypeRepo.Add(x))
-            {
-                return true;
-            }
-            return false;
+            return _clubTypeRepo.Add(x);
         }
 
         public ClubType FindClubType(string id)
@@ -94,52 +72,57 @@ namespace ServiceBus
 
         public bool DeleteClubType(string id)
         {
-            if (_clubTypeRepo.Delete(id))
-            {
-                return true;
-            }
-            return false;
+            return _clubTypeRepo.Delete(id);
         }
 
         public List<GolfCourse> FindAllCourses()
         {
-            List<GolfCourse> courses = (List<GolfCourse>)_courseRepo.FindAll();
-
-            return courses;
+            return (List<GolfCourse>)_courseRepo.FindAll();
         }
 
         public GolfCourse FindCourse(string id)
         {
-            GolfCourse course = _courseRepo.Find(id);
-
-            return course;
+            return _courseRepo.Find(id);
         }
 
         public bool UpdateCourse(GolfCourse x)
         {
-            if (_courseRepo.Update(x))
-            {
-                return true;
-            }
-            return false;
+            return _courseRepo.Update(x);
         }
 
         public bool AddCourse(GolfCourse x)
         {
-            if (_courseRepo.Add(x))
-            {
-                return true;
-            }
-            return false;
+            return _courseRepo.Add(x);
         }
 
         public bool DeleteCourse(string id)
         {
-            if (_courseRepo.Delete(id))
-            {
-                return true;
-            }
-            return false;
+            return _courseRepo.Delete(id);
+        }
+
+        public List<TeeInformation> FindAllTeeInfo()
+        {
+            return (List<TeeInformation>)_teeInformationRepo.FindAll();
+        }
+
+        public TeeInformation FindTeeInformation(string id)
+        {
+            return _teeInformationRepo.Find(id);
+        }
+
+        public bool UpdateTeeInformation(TeeInformation x)
+        {
+            return _teeInformationRepo.Update(x);
+        }
+
+        public bool AddTeeInformation(TeeInformation x)
+        {
+            return _teeInformationRepo.Add(x);
+        }
+
+        public bool DeleteTeeInformation(string id)
+        {
+            return _teeInformationRepo.Delete(id);
         }
     }
 }

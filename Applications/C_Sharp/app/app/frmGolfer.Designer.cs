@@ -55,6 +55,17 @@ namespace app
             this.btnUpdateCourse = new System.Windows.Forms.Button();
             this.btnAddCourse = new System.Windows.Forms.Button();
             this.btnGetCourses = new System.Windows.Forms.Button();
+            this.txtSlope = new System.Windows.Forms.TextBox();
+            this.txtRating = new System.Windows.Forms.TextBox();
+            this.txtYardage = new System.Windows.Forms.TextBox();
+            this.txtTeeName = new System.Windows.Forms.TextBox();
+            this.txtTCourseID = new System.Windows.Forms.TextBox();
+            this.lstTeeInformation = new System.Windows.Forms.ListBox();
+            this.btnDeleteTeeInfo = new System.Windows.Forms.Button();
+            this.btnUpdateTeeInfo = new System.Windows.Forms.Button();
+            this.btnAddTeeInfo = new System.Windows.Forms.Button();
+            this.btnGetTeeInformation = new System.Windows.Forms.Button();
+            this.txtUniqueID = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnGetAllGolfers
@@ -296,11 +307,121 @@ namespace app
             this.btnGetCourses.UseVisualStyleBackColor = true;
             this.btnGetCourses.Click += new System.EventHandler(this.btnGetCourses_Click);
             // 
+            // txtSlope
+            // 
+            this.txtSlope.Location = new System.Drawing.Point(841, 557);
+            this.txtSlope.Name = "txtSlope";
+            this.txtSlope.PlaceholderText = "Slope";
+            this.txtSlope.Size = new System.Drawing.Size(157, 23);
+            this.txtSlope.TabIndex = 37;
+            // 
+            // txtRating
+            // 
+            this.txtRating.Location = new System.Drawing.Point(841, 528);
+            this.txtRating.Name = "txtRating";
+            this.txtRating.PlaceholderText = "Rating";
+            this.txtRating.Size = new System.Drawing.Size(157, 23);
+            this.txtRating.TabIndex = 36;
+            // 
+            // txtYardage
+            // 
+            this.txtYardage.Location = new System.Drawing.Point(841, 499);
+            this.txtYardage.Name = "txtYardage";
+            this.txtYardage.PlaceholderText = "Yardage";
+            this.txtYardage.Size = new System.Drawing.Size(157, 23);
+            this.txtYardage.TabIndex = 35;
+            // 
+            // txtTeeName
+            // 
+            this.txtTeeName.Location = new System.Drawing.Point(841, 470);
+            this.txtTeeName.Name = "txtTeeName";
+            this.txtTeeName.PlaceholderText = "Tee Name";
+            this.txtTeeName.Size = new System.Drawing.Size(157, 23);
+            this.txtTeeName.TabIndex = 34;
+            // 
+            // txtTCourseID
+            // 
+            this.txtTCourseID.Location = new System.Drawing.Point(842, 441);
+            this.txtTCourseID.Name = "txtTCourseID";
+            this.txtTCourseID.PlaceholderText = "Course ID";
+            this.txtTCourseID.Size = new System.Drawing.Size(157, 23);
+            this.txtTCourseID.TabIndex = 33;
+            // 
+            // lstTeeInformation
+            // 
+            this.lstTeeInformation.FormattingEnabled = true;
+            this.lstTeeInformation.ItemHeight = 15;
+            this.lstTeeInformation.Location = new System.Drawing.Point(715, 441);
+            this.lstTeeInformation.Name = "lstTeeInformation";
+            this.lstTeeInformation.Size = new System.Drawing.Size(120, 139);
+            this.lstTeeInformation.TabIndex = 32;
+            this.lstTeeInformation.SelectedIndexChanged += new System.EventHandler(this.lstTeeInformation_SelectedIndexChanged);
+            // 
+            // btnDeleteTeeInfo
+            // 
+            this.btnDeleteTeeInfo.Location = new System.Drawing.Point(606, 557);
+            this.btnDeleteTeeInfo.Name = "btnDeleteTeeInfo";
+            this.btnDeleteTeeInfo.Size = new System.Drawing.Size(103, 23);
+            this.btnDeleteTeeInfo.TabIndex = 31;
+            this.btnDeleteTeeInfo.Text = "Delete Tee Info";
+            this.btnDeleteTeeInfo.UseVisualStyleBackColor = true;
+            this.btnDeleteTeeInfo.Click += new System.EventHandler(this.btnDeleteTeeInfo_Click);
+            // 
+            // btnUpdateTeeInfo
+            // 
+            this.btnUpdateTeeInfo.Location = new System.Drawing.Point(606, 528);
+            this.btnUpdateTeeInfo.Name = "btnUpdateTeeInfo";
+            this.btnUpdateTeeInfo.Size = new System.Drawing.Size(103, 23);
+            this.btnUpdateTeeInfo.TabIndex = 30;
+            this.btnUpdateTeeInfo.Text = "Update Tee Info";
+            this.btnUpdateTeeInfo.UseVisualStyleBackColor = true;
+            this.btnUpdateTeeInfo.Click += new System.EventHandler(this.btnUpdateTeeInfo_Click);
+            // 
+            // btnAddTeeInfo
+            // 
+            this.btnAddTeeInfo.Location = new System.Drawing.Point(606, 499);
+            this.btnAddTeeInfo.Name = "btnAddTeeInfo";
+            this.btnAddTeeInfo.Size = new System.Drawing.Size(103, 23);
+            this.btnAddTeeInfo.TabIndex = 29;
+            this.btnAddTeeInfo.Text = "Add Tee Info";
+            this.btnAddTeeInfo.UseVisualStyleBackColor = true;
+            this.btnAddTeeInfo.Click += new System.EventHandler(this.btnAddTeeInfo_Click);
+            // 
+            // btnGetTeeInformation
+            // 
+            this.btnGetTeeInformation.Location = new System.Drawing.Point(606, 441);
+            this.btnGetTeeInformation.Name = "btnGetTeeInformation";
+            this.btnGetTeeInformation.Size = new System.Drawing.Size(103, 23);
+            this.btnGetTeeInformation.TabIndex = 28;
+            this.btnGetTeeInformation.Text = "Get Tee Info";
+            this.btnGetTeeInformation.UseVisualStyleBackColor = true;
+            this.btnGetTeeInformation.Click += new System.EventHandler(this.btnGetTeeInformation_Click);
+            // 
+            // txtUniqueID
+            // 
+            this.txtUniqueID.Enabled = false;
+            this.txtUniqueID.Location = new System.Drawing.Point(840, 412);
+            this.txtUniqueID.Name = "txtUniqueID";
+            this.txtUniqueID.PlaceholderText = "Unique ID";
+            this.txtUniqueID.Size = new System.Drawing.Size(157, 23);
+            this.txtUniqueID.TabIndex = 38;
+            // 
             // frmGolfer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1010, 592);
+            this.Controls.Add(this.txtUniqueID);
+            this.Controls.Add(this.txtSlope);
+            this.Controls.Add(this.txtRating);
+            this.Controls.Add(this.txtYardage);
+            this.Controls.Add(this.txtTeeName);
+            this.Controls.Add(this.txtTCourseID);
+            this.Controls.Add(this.lstTeeInformation);
+            this.Controls.Add(this.btnDeleteTeeInfo);
+            this.Controls.Add(this.btnUpdateTeeInfo);
+            this.Controls.Add(this.btnAddTeeInfo);
+            this.Controls.Add(this.btnGetTeeInformation);
             this.Controls.Add(this.txtPar);
             this.Controls.Add(this.txtNumTees);
             this.Controls.Add(this.txtCourseName);
@@ -362,6 +483,17 @@ namespace app
         private System.Windows.Forms.Button btnUpdateCourse;
         private System.Windows.Forms.Button btnAddCourse;
         private System.Windows.Forms.Button btnGetCourses;
+        private System.Windows.Forms.TextBox txtSlope;
+        private System.Windows.Forms.TextBox txtRating;
+        private System.Windows.Forms.TextBox txtYardage;
+        private System.Windows.Forms.TextBox txtTeeName;
+        private System.Windows.Forms.TextBox txtTCourseID;
+        private System.Windows.Forms.ListBox lstTeeInformation;
+        private System.Windows.Forms.Button btnDeleteTeeInfo;
+        private System.Windows.Forms.Button btnUpdateTeeInfo;
+        private System.Windows.Forms.Button btnAddTeeInfo;
+        private System.Windows.Forms.Button btnGetTeeInformation;
+        private System.Windows.Forms.TextBox txtUniqueID;
     }
 }
 

@@ -21,7 +21,7 @@ namespace app
         {
             InitializeComponent();
 
-            db_Service = new Service(new GolferRepo(), new ClubTypeRepo(), new GolfCourseRepo());
+            db_Service = new Service(new GolferRepo(), new ClubTypeRepo(), new GolfCourseRepo(), new TeeInformationRepo());
         }
 
         private void btnAddGolfer_Click(object sender, EventArgs e)
@@ -304,6 +304,107 @@ namespace app
                 txtCourseName.Text = gc._courseName;
                 txtNumTees.Text = gc._numTees.ToString();
                 txtPar.Text = gc._par.ToString();
+            }
+        }
+
+        private void btnGetTeeInformation_Click(object sender, EventArgs e)
+        {
+            lstTeeInformation.Items.Clear();
+            foreach (TeeInformation t in db_Service.FindAllTeeInfo())
+            {
+                lstTeeInformation.Items.Add(t);
+            }
+        }
+
+        private void btnAddTeeInfo_Click(object sender, EventArgs e)
+        {
+            if (txtTCourseID.Text.Length != 0)
+            {
+                TeeInformation t = new TeeInformation(
+                    0,
+                    txtTCourseID.Text,
+                    txtTeeName.Text,
+                    int.Parse(txtYardage.Text),
+                    short.Parse(txtSlope.Text),
+                    decimal.Parse(txtRating.Text)
+                    );
+
+                if (db_Service.AddTeeInformation(t))
+                {
+                    MessageBox.Show("Successfully added tee info");
+                    btnGetTeeInformation_Click(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show("Failed to add tee info");
+                }
+            }
+            else
+            {
+                MessageBox.Show("No course Selected");
+            }
+        }
+
+        private void btnUpdateTeeInfo_Click(object sender, EventArgs e)
+        {
+            if (txtUniqueID.Text.Length != 0)
+            {
+                TeeInformation t = new TeeInformation(
+                    short.Parse(txtUniqueID.Text),
+                    txtTCourseID.Text,
+                    txtTeeName.Text,
+                    int.Parse(txtYardage.Text),
+                    short.Parse(txtSlope.Text),
+                    decimal.Parse(txtRating.Text)
+                    );
+
+                if (db_Service.UpdateTeeInformation(t))
+                {
+                    MessageBox.Show("Successfully updated tee info");
+                    btnGetTeeInformation_Click(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show("Failed to udpate tee info");
+                }
+            }
+            else
+            {
+                MessageBox.Show("No tee info Selected");
+            }
+        }
+
+        private void btnDeleteTeeInfo_Click(object sender, EventArgs e)
+        {
+            if(txtTCourseID.Text.Length != 0)
+            {
+                if(db_Service.DeleteTeeInformation(txtUniqueID.Text))
+                {
+                    MessageBox.Show("Successfully deleted tee info");
+                    btnGetTeeInformation_Click(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show("Failed to delete tee info");
+                }
+            }
+            else
+            {
+                MessageBox.Show("No Course Selected");
+            }
+        }
+
+        private void lstTeeInformation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(lstTeeInformation.SelectedItems.Count == 1)
+            {
+                TeeInformation t = (TeeInformation)lstTeeInformation.SelectedItem;
+                txtUniqueID.Text = t._uniqueID.ToString();
+                txtTCourseID.Text = t._courseID;
+                txtTeeName.Text = t._teeName;
+                txtYardage.Text = t._yardage.ToString();
+                txtRating.Text = t._rating.ToString();
+                txtSlope.Text = t._slope.ToString();
             }
         }
     }
