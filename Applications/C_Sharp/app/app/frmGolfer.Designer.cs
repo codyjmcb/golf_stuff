@@ -46,6 +46,15 @@ namespace app
             this.lstClubType = new System.Windows.Forms.ListBox();
             this.txtClubName = new System.Windows.Forms.TextBox();
             this.txtClubUniqueId = new System.Windows.Forms.TextBox();
+            this.txtPar = new System.Windows.Forms.TextBox();
+            this.txtNumTees = new System.Windows.Forms.TextBox();
+            this.txtCourseName = new System.Windows.Forms.TextBox();
+            this.txtCourseID = new System.Windows.Forms.TextBox();
+            this.lstCourses = new System.Windows.Forms.ListBox();
+            this.btnDeleteCourse = new System.Windows.Forms.Button();
+            this.btnUpdateCourse = new System.Windows.Forms.Button();
+            this.btnAddCourse = new System.Windows.Forms.Button();
+            this.btnGetCourses = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnGetAllGolfers
@@ -205,11 +214,102 @@ namespace app
             this.txtClubUniqueId.Size = new System.Drawing.Size(157, 23);
             this.txtClubUniqueId.TabIndex = 17;
             // 
+            // txtPar
+            // 
+            this.txtPar.Location = new System.Drawing.Point(426, 528);
+            this.txtPar.Name = "txtPar";
+            this.txtPar.PlaceholderText = "Par";
+            this.txtPar.Size = new System.Drawing.Size(157, 23);
+            this.txtPar.TabIndex = 27;
+            // 
+            // txtNumTees
+            // 
+            this.txtNumTees.Location = new System.Drawing.Point(426, 499);
+            this.txtNumTees.Name = "txtNumTees";
+            this.txtNumTees.PlaceholderText = "Num Tees";
+            this.txtNumTees.Size = new System.Drawing.Size(157, 23);
+            this.txtNumTees.TabIndex = 26;
+            // 
+            // txtCourseName
+            // 
+            this.txtCourseName.Location = new System.Drawing.Point(426, 470);
+            this.txtCourseName.Name = "txtCourseName";
+            this.txtCourseName.PlaceholderText = "Course Name";
+            this.txtCourseName.Size = new System.Drawing.Size(157, 23);
+            this.txtCourseName.TabIndex = 25;
+            // 
+            // txtCourseID
+            // 
+            this.txtCourseID.Location = new System.Drawing.Point(427, 441);
+            this.txtCourseID.Name = "txtCourseID";
+            this.txtCourseID.PlaceholderText = "Course ID";
+            this.txtCourseID.Size = new System.Drawing.Size(157, 23);
+            this.txtCourseID.TabIndex = 24;
+            // 
+            // lstCourses
+            // 
+            this.lstCourses.FormattingEnabled = true;
+            this.lstCourses.ItemHeight = 15;
+            this.lstCourses.Location = new System.Drawing.Point(121, 441);
+            this.lstCourses.Name = "lstCourses";
+            this.lstCourses.Size = new System.Drawing.Size(300, 139);
+            this.lstCourses.TabIndex = 23;
+            this.lstCourses.SelectedIndexChanged += new System.EventHandler(this.lstCourses_SelectedIndexChanged);
+            // 
+            // btnDeleteCourse
+            // 
+            this.btnDeleteCourse.Location = new System.Drawing.Point(12, 557);
+            this.btnDeleteCourse.Name = "btnDeleteCourse";
+            this.btnDeleteCourse.Size = new System.Drawing.Size(103, 23);
+            this.btnDeleteCourse.TabIndex = 22;
+            this.btnDeleteCourse.Text = "Delete Course";
+            this.btnDeleteCourse.UseVisualStyleBackColor = true;
+            this.btnDeleteCourse.Click += new System.EventHandler(this.btnDeleteCourse_Click);
+            // 
+            // btnUpdateCourse
+            // 
+            this.btnUpdateCourse.Location = new System.Drawing.Point(12, 528);
+            this.btnUpdateCourse.Name = "btnUpdateCourse";
+            this.btnUpdateCourse.Size = new System.Drawing.Size(103, 23);
+            this.btnUpdateCourse.TabIndex = 21;
+            this.btnUpdateCourse.Text = "Update Course";
+            this.btnUpdateCourse.UseVisualStyleBackColor = true;
+            this.btnUpdateCourse.Click += new System.EventHandler(this.btnUpdateCourse_Click);
+            // 
+            // btnAddCourse
+            // 
+            this.btnAddCourse.Location = new System.Drawing.Point(12, 499);
+            this.btnAddCourse.Name = "btnAddCourse";
+            this.btnAddCourse.Size = new System.Drawing.Size(103, 23);
+            this.btnAddCourse.TabIndex = 20;
+            this.btnAddCourse.Text = "Add Course";
+            this.btnAddCourse.UseVisualStyleBackColor = true;
+            this.btnAddCourse.Click += new System.EventHandler(this.btnAddCourse_Click);
+            // 
+            // btnGetCourses
+            // 
+            this.btnGetCourses.Location = new System.Drawing.Point(12, 441);
+            this.btnGetCourses.Name = "btnGetCourses";
+            this.btnGetCourses.Size = new System.Drawing.Size(103, 23);
+            this.btnGetCourses.TabIndex = 19;
+            this.btnGetCourses.Text = "Get All Courses";
+            this.btnGetCourses.UseVisualStyleBackColor = true;
+            this.btnGetCourses.Click += new System.EventHandler(this.btnGetCourses_Click);
+            // 
             // frmGolfer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1010, 592);
+            this.Controls.Add(this.txtPar);
+            this.Controls.Add(this.txtNumTees);
+            this.Controls.Add(this.txtCourseName);
+            this.Controls.Add(this.txtCourseID);
+            this.Controls.Add(this.lstCourses);
+            this.Controls.Add(this.btnDeleteCourse);
+            this.Controls.Add(this.btnUpdateCourse);
+            this.Controls.Add(this.btnAddCourse);
+            this.Controls.Add(this.btnGetCourses);
             this.Controls.Add(this.txtClubName);
             this.Controls.Add(this.txtClubUniqueId);
             this.Controls.Add(this.lstClubType);
@@ -253,6 +353,15 @@ namespace app
         private System.Windows.Forms.ListBox lstClubType;
         private System.Windows.Forms.TextBox txtClubName;
         private System.Windows.Forms.TextBox txtClubUniqueId;
+        private System.Windows.Forms.TextBox txtPar;
+        private System.Windows.Forms.TextBox txtNumTees;
+        private System.Windows.Forms.TextBox txtCourseName;
+        private System.Windows.Forms.TextBox txtCourseID;
+        private System.Windows.Forms.ListBox lstCourses;
+        private System.Windows.Forms.Button btnDeleteCourse;
+        private System.Windows.Forms.Button btnUpdateCourse;
+        private System.Windows.Forms.Button btnAddCourse;
+        private System.Windows.Forms.Button btnGetCourses;
     }
 }
 

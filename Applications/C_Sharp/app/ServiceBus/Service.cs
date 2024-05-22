@@ -9,11 +9,13 @@ namespace ServiceBus
     {
         IRepository<Golfer> _golferRepo;
         IRepository<ClubType> _clubTypeRepo;
+        IRepository<GolfCourse> _courseRepo;
 
-        public Service(IRepository<Golfer> golferRepo, IRepository<ClubType> clubTypeRepo)
+        public Service(IRepository<Golfer> golferRepo, IRepository<ClubType> clubTypeRepo, IRepository<GolfCourse> courseRepo)
         {
             _golferRepo = golferRepo;
             _clubTypeRepo = clubTypeRepo;
+            _courseRepo = courseRepo;
         }
 
         public List<Golfer> FindAllGolfers()
@@ -93,6 +95,47 @@ namespace ServiceBus
         public bool DeleteClubType(string id)
         {
             if (_clubTypeRepo.Delete(id))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public List<GolfCourse> FindAllCourses()
+        {
+            List<GolfCourse> courses = (List<GolfCourse>)_courseRepo.FindAll();
+
+            return courses;
+        }
+
+        public GolfCourse FindCourse(string id)
+        {
+            GolfCourse course = _courseRepo.Find(id);
+
+            return course;
+        }
+
+        public bool UpdateCourse(GolfCourse x)
+        {
+            if (_courseRepo.Update(x))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool AddCourse(GolfCourse x)
+        {
+            if (_courseRepo.Add(x))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool DeleteCourse(string id)
+        {
+            if (_courseRepo.Delete(id))
             {
                 return true;
             }
