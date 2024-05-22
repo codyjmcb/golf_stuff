@@ -21,9 +21,7 @@ namespace app
         {
             InitializeComponent();
 
-            GolfersRepo golferRepo = new GolfersRepo();
-
-            db_Service = new Service(golferRepo);
+            db_Service = new Service(new GolfersRepo(), new ClubTypeRepo());
         }
 
         private void btnAddGolfer_Click(object sender, EventArgs e)
@@ -141,6 +139,90 @@ namespace app
                 txtMiddleInitial.Text = g._middleInitial.ToString();
                 txtLastName.Text = g._lastName;
                 txtHandicap.Text = g._handicap.ToString();
+            }
+        }
+
+        private void btnGetClubTypes_Click(object sender, EventArgs e)
+        {
+            lstClubType.Items.Clear();
+            foreach(ClubType c in db_Service.FindAllClubTypes())
+            {
+                lstClubType.Items.Add(c);
+            }
+        }
+
+        private void btnAddClubType_Click(object sender, EventArgs e)
+        {
+            if(txtClubName.Text.Length != 0)
+            {
+                ClubType c = new ClubType(0, txtClubName.Text);
+                if(db_Service.AddClubType(c))
+                {
+                    MessageBox.Show("Successfully Added Club Type");
+                    btnGetClubTypes_Click(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show("Failed to add club type");
+                }
+            }
+            else
+            {
+                MessageBox.Show("No Club Name Entered");
+            }
+        }
+
+        private void btnUpdateClubType_Click(object sender, EventArgs e)
+        {
+            if (txtClubUniqueId.Text.Length != 0)
+            {
+                ClubType c = new ClubType(byte.Parse(txtClubUniqueId.Text), txtClubName.Text);
+
+                if (db_Service.UpdateClubType(c))
+                {
+                    MessageBox.Show("Successfully Updated Club Type");
+                    btnGetClubTypes_Click(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show("Failed to update club type");
+                }
+            }
+            else
+            {
+                MessageBox.Show("No club type selected");
+            }
+        }
+
+        private void btnDeleteClubType_Click(object sender, EventArgs e)
+        {
+            if (txtClubUniqueId.Text.Length != 0)
+            {
+                ClubType c = new ClubType(byte.Parse(txtClubUniqueId.Text), "doesn't matter");
+
+                if (db_Service.DeleteClubType(c._uniqueID.ToString()))
+                {
+                    MessageBox.Show("Successfully Deleted Club Type");
+                    btnGetClubTypes_Click(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show("Failed to delete club type");
+                }
+            }
+            else
+            {
+                MessageBox.Show("No club type selected");
+            }
+        }
+
+        private void lstClubType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(lstClubType.SelectedItems.Count == 1)
+            {
+                ClubType c = (ClubType)lstClubType.SelectedItem;
+                txtClubUniqueId.Text = c._uniqueID.ToString();
+                txtClubName.Text = c._clubName;
             }
         }
     }
