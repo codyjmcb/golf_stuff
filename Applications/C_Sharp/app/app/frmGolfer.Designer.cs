@@ -66,6 +66,17 @@ namespace app
             this.btnAddTeeInfo = new System.Windows.Forms.Button();
             this.btnGetTeeInformation = new System.Windows.Forms.Button();
             this.txtUniqueID = new System.Windows.Forms.TextBox();
+            this.txtGolfClubUniqueId = new System.Windows.Forms.TextBox();
+            this.txtGolfClubModel = new System.Windows.Forms.TextBox();
+            this.txtGolfClubMake = new System.Windows.Forms.TextBox();
+            this.txtGolfClubLie = new System.Windows.Forms.TextBox();
+            this.txtGolfClubClubID = new System.Windows.Forms.TextBox();
+            this.txtGolfClubGolferId = new System.Windows.Forms.TextBox();
+            this.lstGolfClubs = new System.Windows.Forms.ListBox();
+            this.btnDeleteGolfClub = new System.Windows.Forms.Button();
+            this.btnUpdateGolfClub = new System.Windows.Forms.Button();
+            this.btnAddGolfClub = new System.Windows.Forms.Button();
+            this.btnGetGolfClubs = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnGetAllGolfers
@@ -406,11 +417,121 @@ namespace app
             this.txtUniqueID.Size = new System.Drawing.Size(157, 23);
             this.txtUniqueID.TabIndex = 38;
             // 
+            // txtGolfClubUniqueId
+            // 
+            this.txtGolfClubUniqueId.Enabled = false;
+            this.txtGolfClubUniqueId.Location = new System.Drawing.Point(248, 229);
+            this.txtGolfClubUniqueId.Name = "txtGolfClubUniqueId";
+            this.txtGolfClubUniqueId.PlaceholderText = "Unique ID";
+            this.txtGolfClubUniqueId.Size = new System.Drawing.Size(157, 23);
+            this.txtGolfClubUniqueId.TabIndex = 49;
+            // 
+            // txtGolfClubModel
+            // 
+            this.txtGolfClubModel.Location = new System.Drawing.Point(249, 374);
+            this.txtGolfClubModel.Name = "txtGolfClubModel";
+            this.txtGolfClubModel.PlaceholderText = "Model";
+            this.txtGolfClubModel.Size = new System.Drawing.Size(157, 23);
+            this.txtGolfClubModel.TabIndex = 48;
+            // 
+            // txtGolfClubMake
+            // 
+            this.txtGolfClubMake.Location = new System.Drawing.Point(249, 345);
+            this.txtGolfClubMake.Name = "txtGolfClubMake";
+            this.txtGolfClubMake.PlaceholderText = "Make";
+            this.txtGolfClubMake.Size = new System.Drawing.Size(157, 23);
+            this.txtGolfClubMake.TabIndex = 47;
+            // 
+            // txtGolfClubLie
+            // 
+            this.txtGolfClubLie.Location = new System.Drawing.Point(249, 316);
+            this.txtGolfClubLie.Name = "txtGolfClubLie";
+            this.txtGolfClubLie.PlaceholderText = "Lie";
+            this.txtGolfClubLie.Size = new System.Drawing.Size(157, 23);
+            this.txtGolfClubLie.TabIndex = 46;
+            // 
+            // txtGolfClubClubID
+            // 
+            this.txtGolfClubClubID.Location = new System.Drawing.Point(249, 287);
+            this.txtGolfClubClubID.Name = "txtGolfClubClubID";
+            this.txtGolfClubClubID.PlaceholderText = "Club ID";
+            this.txtGolfClubClubID.Size = new System.Drawing.Size(157, 23);
+            this.txtGolfClubClubID.TabIndex = 45;
+            // 
+            // txtGolfClubGolferId
+            // 
+            this.txtGolfClubGolferId.Location = new System.Drawing.Point(250, 258);
+            this.txtGolfClubGolferId.Name = "txtGolfClubGolferId";
+            this.txtGolfClubGolferId.PlaceholderText = "Golfer ID";
+            this.txtGolfClubGolferId.Size = new System.Drawing.Size(157, 23);
+            this.txtGolfClubGolferId.TabIndex = 44;
+            // 
+            // lstGolfClubs
+            // 
+            this.lstGolfClubs.FormattingEnabled = true;
+            this.lstGolfClubs.ItemHeight = 15;
+            this.lstGolfClubs.Location = new System.Drawing.Point(123, 258);
+            this.lstGolfClubs.Name = "lstGolfClubs";
+            this.lstGolfClubs.Size = new System.Drawing.Size(120, 139);
+            this.lstGolfClubs.TabIndex = 43;
+            this.lstGolfClubs.SelectedIndexChanged += new System.EventHandler(this.lstGolfClubs_SelectedIndexChanged);
+            // 
+            // btnDeleteGolfClub
+            // 
+            this.btnDeleteGolfClub.Location = new System.Drawing.Point(12, 374);
+            this.btnDeleteGolfClub.Name = "btnDeleteGolfClub";
+            this.btnDeleteGolfClub.Size = new System.Drawing.Size(103, 23);
+            this.btnDeleteGolfClub.TabIndex = 42;
+            this.btnDeleteGolfClub.Text = "Delete Golf Club";
+            this.btnDeleteGolfClub.UseVisualStyleBackColor = true;
+            this.btnDeleteGolfClub.Click += new System.EventHandler(this.btnDeleteGolfClub_Click);
+            // 
+            // btnUpdateGolfClub
+            // 
+            this.btnUpdateGolfClub.Location = new System.Drawing.Point(7, 345);
+            this.btnUpdateGolfClub.Name = "btnUpdateGolfClub";
+            this.btnUpdateGolfClub.Size = new System.Drawing.Size(113, 23);
+            this.btnUpdateGolfClub.TabIndex = 41;
+            this.btnUpdateGolfClub.Text = "Update Golf Club";
+            this.btnUpdateGolfClub.UseVisualStyleBackColor = true;
+            this.btnUpdateGolfClub.Click += new System.EventHandler(this.btnUpdateGolfClub_Click);
+            // 
+            // btnAddGolfClub
+            // 
+            this.btnAddGolfClub.Location = new System.Drawing.Point(12, 316);
+            this.btnAddGolfClub.Name = "btnAddGolfClub";
+            this.btnAddGolfClub.Size = new System.Drawing.Size(103, 23);
+            this.btnAddGolfClub.TabIndex = 40;
+            this.btnAddGolfClub.Text = "Add Golf Club";
+            this.btnAddGolfClub.UseVisualStyleBackColor = true;
+            this.btnAddGolfClub.Click += new System.EventHandler(this.btnAddGolfClub_Click);
+            // 
+            // btnGetGolfClubs
+            // 
+            this.btnGetGolfClubs.Location = new System.Drawing.Point(12, 258);
+            this.btnGetGolfClubs.Name = "btnGetGolfClubs";
+            this.btnGetGolfClubs.Size = new System.Drawing.Size(103, 23);
+            this.btnGetGolfClubs.TabIndex = 39;
+            this.btnGetGolfClubs.Text = "Get Golf Clubs";
+            this.btnGetGolfClubs.UseVisualStyleBackColor = true;
+            this.btnGetGolfClubs.Click += new System.EventHandler(this.btnGetGolfClubs_Click);
+            // 
             // frmGolfer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1237, 718);
+            this.Controls.Add(this.txtGolfClubUniqueId);
+            this.Controls.Add(this.txtGolfClubModel);
+            this.Controls.Add(this.txtGolfClubMake);
+            this.Controls.Add(this.txtGolfClubLie);
+            this.Controls.Add(this.txtGolfClubClubID);
+            this.Controls.Add(this.txtGolfClubGolferId);
+            this.Controls.Add(this.lstGolfClubs);
+            this.Controls.Add(this.btnDeleteGolfClub);
+            this.Controls.Add(this.btnUpdateGolfClub);
+            this.Controls.Add(this.btnAddGolfClub);
+            this.Controls.Add(this.btnGetGolfClubs);
             this.Controls.Add(this.txtUniqueID);
             this.Controls.Add(this.txtSlope);
             this.Controls.Add(this.txtRating);
@@ -494,6 +615,17 @@ namespace app
         private System.Windows.Forms.Button btnAddTeeInfo;
         private System.Windows.Forms.Button btnGetTeeInformation;
         private System.Windows.Forms.TextBox txtUniqueID;
+        private System.Windows.Forms.TextBox txtGolfClubUniqueId;
+        private System.Windows.Forms.TextBox txtGolfClubModel;
+        private System.Windows.Forms.TextBox txtGolfClubMake;
+        private System.Windows.Forms.TextBox txtGolfClubLie;
+        private System.Windows.Forms.TextBox txtGolfClubClubID;
+        private System.Windows.Forms.TextBox txtGolfClubGolferId;
+        private System.Windows.Forms.ListBox lstGolfClubs;
+        private System.Windows.Forms.Button btnDeleteGolfClub;
+        private System.Windows.Forms.Button btnUpdateGolfClub;
+        private System.Windows.Forms.Button btnAddGolfClub;
+        private System.Windows.Forms.Button btnGetGolfClubs;
     }
 }
 

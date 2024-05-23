@@ -94,4 +94,34 @@
             return $"{_courseID}:{_teeName}";
         }
     }
+
+    public class GolfClub
+    {
+        public short _uniqueID { get; set; }
+
+        public string _golferID { get; set; }
+
+        public byte _clubID { get; set; }
+
+        public decimal _lie { get; set; }
+
+        public string _make { get; set; }
+
+        public string _model { get; set; }
+
+        public GolfClub(short uniqueID, string golferID, byte clubID, decimal lie, string make, string model)
+        {
+            _uniqueID = uniqueID;
+            _golferID = golferID;
+            _clubID = clubID;
+            _lie = lie;
+            _make = make;
+            _model = model;
+        }
+
+        public override string ToString()
+        {
+            return $"{_golferID}: {_make} {_model}";
+        }
+    }
 }

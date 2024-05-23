@@ -21,7 +21,7 @@ namespace app
         {
             InitializeComponent();
 
-            db_Service = new Service(new GolferRepo(), new ClubTypeRepo(), new GolfCourseRepo(), new TeeInformationRepo());
+            db_Service = new Service(new GolferRepo(), new ClubTypeRepo(), new GolfCourseRepo(), new TeeInformationRepo(), new GolfClubRepo());
         }
 
         private void btnAddGolfer_Click(object sender, EventArgs e)
@@ -139,6 +139,14 @@ namespace app
                 txtMiddleInitial.Text = g._middleInitial.ToString();
                 txtLastName.Text = g._lastName;
                 txtHandicap.Text = g._handicap.ToString();
+
+                lstGolfClubs.Items.Clear();
+                {
+                    foreach(GolfClub gc in db_Service.FindGolfClubsForGolfer(g))
+                    {
+                        lstGolfClubs.Items.Add(gc);
+                    }
+                }
             }
         }
 
@@ -411,6 +419,93 @@ namespace app
                 txtYardage.Text = t._yardage.ToString();
                 txtRating.Text = t._rating.ToString();
                 txtSlope.Text = t._slope.ToString();
+            }
+        }
+
+        private void btnGetGolfClubs_Click(object sender, EventArgs e)
+        {
+            lstGolfClubs.Items.Clear();
+            foreach(GolfClub gc in db_Service.FindAllGolfClubs())
+            {
+                lstGolfClubs.Items.Add(gc);
+            }
+        }
+
+        private void btnAddGolfClub_Click(object sender, EventArgs e)
+        {
+            GolfClub gc = new GolfClub(
+                short.Parse(txtGolfClubUniqueId.Text),
+                txtGolfClubGolferId.Text,
+                byte.Parse(txtGolfClubClubID.Text),
+                decimal.Parse(txtGolfClubLie.Text),
+                txtGolfClubMake.Text,
+                txtGolfClubModel.Text
+                );
+
+            if (db_Service.AddGolfClub(gc))
+            {
+                MessageBox.Show("Successfully added golf club");
+                btnGetGolfClubs_Click(sender, e);
+            }
+            else
+            {
+                MessageBox.Show("Failed to add golf club");
+            }
+        }
+
+        private void btnUpdateGolfClub_Click(object sender, EventArgs e)
+        {
+            GolfClub gc = new GolfClub(
+                short.Parse(txtGolfClubUniqueId.Text),
+                txtGolfClubGolferId.Text,
+                byte.Parse(txtGolfClubClubID.Text),
+                decimal.Parse(txtGolfClubLie.Text),
+                txtGolfClubMake.Text,
+                txtGolfClubModel.Text
+                );
+
+            if(db_Service.UpdateGolfClub(gc))
+            {
+                MessageBox.Show("Successfully updated golf club");
+                btnGetGolfClubs_Click(sender, e);
+            }
+            else
+            {
+                MessageBox.Show("Failed to update golf club");
+            }
+        }
+
+        private void btnDeleteGolfClub_Click(object sender, EventArgs e)
+        {
+            if(txtGolfClubUniqueId.Text.Length != 0)
+            {
+                if(db_Service.DeleteGolfClub(txtGolfClubUniqueId.Text))
+                {
+                    MessageBox.Show("Successfully deleted golf club");
+                    btnGetGolfClubs_Click(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show("Failed to delete golf club");
+                }
+            }
+            else
+            {
+                MessageBox.Show("No golf club selected");
+            }
+        }
+
+        private void lstGolfClubs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(lstGolfClubs.SelectedItems.Count == 1)
+            {
+                GolfClub gc = (GolfClub)lstGolfClubs.SelectedItem;
+                txtGolfClubUniqueId.Text = gc._uniqueID.ToString();
+                txtGolfClubGolferId.Text = gc._golferID;
+                txtGolfClubClubID.Text = gc._clubID.ToString();
+                txtGolfClubLie.Text = gc._lie.ToString();
+                txtGolfClubMake.Text = gc._make;
+                txtGolfClubModel.Text = gc._model;
             }
         }
     }
