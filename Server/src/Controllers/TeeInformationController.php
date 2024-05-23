@@ -125,5 +125,26 @@
 				return "Failure";
 			}
 		}
+
+		public function getTeeInformationForCourse()
+		{
+			$headers = getallheaders();
+
+			$courseID = isset($headers['courseID']) ? $headers['courseID'] : null;
+
+			try
+			{
+				$db = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
+				$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+				$stmt = $db->query("SELECT * FROM $this->table WHERE courseID = \"$courseID\"");
+				$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+				return json_encode($rows);
+			}
+			catch (PDOException $e)
+			{
+				print "Error!: " . $e->getMessage();
+				die();
+			}
+		}
 	}
 ?>

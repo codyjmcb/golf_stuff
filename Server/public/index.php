@@ -24,13 +24,14 @@
 	$router->add('GET', '/golfcourse', 'GolfCourseController@getGolfCourse');
 	$router->add('GET', '/teeinformations', 'TeeInformationController@getTeeInformations');
 	$router->add('GET', '/teeinformation', 'TeeInformationController@getTeeInformation');
+	$router->add('GET', '/golfcourse/teeinformation', 'TeeInformationController@getTeeInformationForCourse');
 
 	// POST ROUTES
 	$router->add('POST', '/golfer', 'GolferController@addGolfer');
 	$router->add('POST', '/clubtype', 'ClubTypeController@addClubType');
 	$router->add('POST', '/golfcourse', 'GolfCourseController@addGolfCourse');
 	$router->add('POST', '/teeinformation', 'TeeInformationController@addTeeInformation');
-	
+
 	// PUT ROUTES
 	$router->add('PUT', '/golfer', 'GolferController@updateGolfer');
 	$router->add('PUT', '/clubtype', 'ClubTypeController@updateClubType');
