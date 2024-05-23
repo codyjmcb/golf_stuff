@@ -55,6 +55,17 @@ namespace app
             this.btnUpdateCourse = new System.Windows.Forms.Button();
             this.btnAddCourse = new System.Windows.Forms.Button();
             this.btnGetCourses = new System.Windows.Forms.Button();
+            this.txtSlope = new System.Windows.Forms.TextBox();
+            this.txtRating = new System.Windows.Forms.TextBox();
+            this.txtYardage = new System.Windows.Forms.TextBox();
+            this.txtTeeName = new System.Windows.Forms.TextBox();
+            this.txtTCourseID = new System.Windows.Forms.TextBox();
+            this.lstTeeInformation = new System.Windows.Forms.ListBox();
+            this.btnDeleteTeeInfo = new System.Windows.Forms.Button();
+            this.btnUpdateTeeInfo = new System.Windows.Forms.Button();
+            this.btnAddTeeInfo = new System.Windows.Forms.Button();
+            this.btnGetTeeInformation = new System.Windows.Forms.Button();
+            this.txtUniqueID = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnGetAllGolfers
@@ -149,7 +160,7 @@ namespace app
             // 
             // btnGetClubType
             // 
-            this.btnGetClubType.Location = new System.Drawing.Point(596, 11);
+            this.btnGetClubType.Location = new System.Drawing.Point(823, 11);
             this.btnGetClubType.Name = "btnGetClubType";
             this.btnGetClubType.Size = new System.Drawing.Size(112, 23);
             this.btnGetClubType.TabIndex = 12;
@@ -159,7 +170,7 @@ namespace app
             // 
             // btnAddClubType
             // 
-            this.btnAddClubType.Location = new System.Drawing.Point(596, 70);
+            this.btnAddClubType.Location = new System.Drawing.Point(823, 70);
             this.btnAddClubType.Name = "btnAddClubType";
             this.btnAddClubType.Size = new System.Drawing.Size(112, 23);
             this.btnAddClubType.TabIndex = 13;
@@ -169,7 +180,7 @@ namespace app
             // 
             // btnUpdateClubType
             // 
-            this.btnUpdateClubType.Location = new System.Drawing.Point(596, 99);
+            this.btnUpdateClubType.Location = new System.Drawing.Point(823, 99);
             this.btnUpdateClubType.Name = "btnUpdateClubType";
             this.btnUpdateClubType.Size = new System.Drawing.Size(112, 23);
             this.btnUpdateClubType.TabIndex = 14;
@@ -179,7 +190,7 @@ namespace app
             // 
             // btnDeleteClubType
             // 
-            this.btnDeleteClubType.Location = new System.Drawing.Point(596, 128);
+            this.btnDeleteClubType.Location = new System.Drawing.Point(823, 128);
             this.btnDeleteClubType.Name = "btnDeleteClubType";
             this.btnDeleteClubType.Size = new System.Drawing.Size(112, 23);
             this.btnDeleteClubType.TabIndex = 15;
@@ -191,7 +202,7 @@ namespace app
             // 
             this.lstClubType.FormattingEnabled = true;
             this.lstClubType.ItemHeight = 15;
-            this.lstClubType.Location = new System.Drawing.Point(714, 12);
+            this.lstClubType.Location = new System.Drawing.Point(941, 12);
             this.lstClubType.Name = "lstClubType";
             this.lstClubType.Size = new System.Drawing.Size(120, 139);
             this.lstClubType.TabIndex = 16;
@@ -199,7 +210,7 @@ namespace app
             // 
             // txtClubName
             // 
-            this.txtClubName.Location = new System.Drawing.Point(840, 41);
+            this.txtClubName.Location = new System.Drawing.Point(1067, 41);
             this.txtClubName.Name = "txtClubName";
             this.txtClubName.PlaceholderText = "Club Name";
             this.txtClubName.Size = new System.Drawing.Size(157, 23);
@@ -208,7 +219,7 @@ namespace app
             // txtClubUniqueId
             // 
             this.txtClubUniqueId.Enabled = false;
-            this.txtClubUniqueId.Location = new System.Drawing.Point(841, 12);
+            this.txtClubUniqueId.Location = new System.Drawing.Point(1068, 12);
             this.txtClubUniqueId.Name = "txtClubUniqueId";
             this.txtClubUniqueId.PlaceholderText = "Unique ID";
             this.txtClubUniqueId.Size = new System.Drawing.Size(157, 23);
@@ -216,7 +227,7 @@ namespace app
             // 
             // txtPar
             // 
-            this.txtPar.Location = new System.Drawing.Point(426, 528);
+            this.txtPar.Location = new System.Drawing.Point(426, 653);
             this.txtPar.Name = "txtPar";
             this.txtPar.PlaceholderText = "Par";
             this.txtPar.Size = new System.Drawing.Size(157, 23);
@@ -224,7 +235,7 @@ namespace app
             // 
             // txtNumTees
             // 
-            this.txtNumTees.Location = new System.Drawing.Point(426, 499);
+            this.txtNumTees.Location = new System.Drawing.Point(426, 624);
             this.txtNumTees.Name = "txtNumTees";
             this.txtNumTees.PlaceholderText = "Num Tees";
             this.txtNumTees.Size = new System.Drawing.Size(157, 23);
@@ -232,7 +243,7 @@ namespace app
             // 
             // txtCourseName
             // 
-            this.txtCourseName.Location = new System.Drawing.Point(426, 470);
+            this.txtCourseName.Location = new System.Drawing.Point(426, 595);
             this.txtCourseName.Name = "txtCourseName";
             this.txtCourseName.PlaceholderText = "Course Name";
             this.txtCourseName.Size = new System.Drawing.Size(157, 23);
@@ -240,7 +251,7 @@ namespace app
             // 
             // txtCourseID
             // 
-            this.txtCourseID.Location = new System.Drawing.Point(427, 441);
+            this.txtCourseID.Location = new System.Drawing.Point(427, 566);
             this.txtCourseID.Name = "txtCourseID";
             this.txtCourseID.PlaceholderText = "Course ID";
             this.txtCourseID.Size = new System.Drawing.Size(157, 23);
@@ -250,7 +261,7 @@ namespace app
             // 
             this.lstCourses.FormattingEnabled = true;
             this.lstCourses.ItemHeight = 15;
-            this.lstCourses.Location = new System.Drawing.Point(121, 441);
+            this.lstCourses.Location = new System.Drawing.Point(121, 566);
             this.lstCourses.Name = "lstCourses";
             this.lstCourses.Size = new System.Drawing.Size(300, 139);
             this.lstCourses.TabIndex = 23;
@@ -258,7 +269,7 @@ namespace app
             // 
             // btnDeleteCourse
             // 
-            this.btnDeleteCourse.Location = new System.Drawing.Point(12, 557);
+            this.btnDeleteCourse.Location = new System.Drawing.Point(12, 682);
             this.btnDeleteCourse.Name = "btnDeleteCourse";
             this.btnDeleteCourse.Size = new System.Drawing.Size(103, 23);
             this.btnDeleteCourse.TabIndex = 22;
@@ -268,7 +279,7 @@ namespace app
             // 
             // btnUpdateCourse
             // 
-            this.btnUpdateCourse.Location = new System.Drawing.Point(12, 528);
+            this.btnUpdateCourse.Location = new System.Drawing.Point(12, 653);
             this.btnUpdateCourse.Name = "btnUpdateCourse";
             this.btnUpdateCourse.Size = new System.Drawing.Size(103, 23);
             this.btnUpdateCourse.TabIndex = 21;
@@ -278,7 +289,7 @@ namespace app
             // 
             // btnAddCourse
             // 
-            this.btnAddCourse.Location = new System.Drawing.Point(12, 499);
+            this.btnAddCourse.Location = new System.Drawing.Point(12, 624);
             this.btnAddCourse.Name = "btnAddCourse";
             this.btnAddCourse.Size = new System.Drawing.Size(103, 23);
             this.btnAddCourse.TabIndex = 20;
@@ -288,7 +299,7 @@ namespace app
             // 
             // btnGetCourses
             // 
-            this.btnGetCourses.Location = new System.Drawing.Point(12, 441);
+            this.btnGetCourses.Location = new System.Drawing.Point(12, 566);
             this.btnGetCourses.Name = "btnGetCourses";
             this.btnGetCourses.Size = new System.Drawing.Size(103, 23);
             this.btnGetCourses.TabIndex = 19;
@@ -296,11 +307,121 @@ namespace app
             this.btnGetCourses.UseVisualStyleBackColor = true;
             this.btnGetCourses.Click += new System.EventHandler(this.btnGetCourses_Click);
             // 
+            // txtSlope
+            // 
+            this.txtSlope.Location = new System.Drawing.Point(1068, 683);
+            this.txtSlope.Name = "txtSlope";
+            this.txtSlope.PlaceholderText = "Slope";
+            this.txtSlope.Size = new System.Drawing.Size(157, 23);
+            this.txtSlope.TabIndex = 37;
+            // 
+            // txtRating
+            // 
+            this.txtRating.Location = new System.Drawing.Point(1068, 654);
+            this.txtRating.Name = "txtRating";
+            this.txtRating.PlaceholderText = "Rating";
+            this.txtRating.Size = new System.Drawing.Size(157, 23);
+            this.txtRating.TabIndex = 36;
+            // 
+            // txtYardage
+            // 
+            this.txtYardage.Location = new System.Drawing.Point(1068, 625);
+            this.txtYardage.Name = "txtYardage";
+            this.txtYardage.PlaceholderText = "Yardage";
+            this.txtYardage.Size = new System.Drawing.Size(157, 23);
+            this.txtYardage.TabIndex = 35;
+            // 
+            // txtTeeName
+            // 
+            this.txtTeeName.Location = new System.Drawing.Point(1068, 596);
+            this.txtTeeName.Name = "txtTeeName";
+            this.txtTeeName.PlaceholderText = "Tee Name";
+            this.txtTeeName.Size = new System.Drawing.Size(157, 23);
+            this.txtTeeName.TabIndex = 34;
+            // 
+            // txtTCourseID
+            // 
+            this.txtTCourseID.Location = new System.Drawing.Point(1069, 567);
+            this.txtTCourseID.Name = "txtTCourseID";
+            this.txtTCourseID.PlaceholderText = "Course ID";
+            this.txtTCourseID.Size = new System.Drawing.Size(157, 23);
+            this.txtTCourseID.TabIndex = 33;
+            // 
+            // lstTeeInformation
+            // 
+            this.lstTeeInformation.FormattingEnabled = true;
+            this.lstTeeInformation.ItemHeight = 15;
+            this.lstTeeInformation.Location = new System.Drawing.Point(942, 567);
+            this.lstTeeInformation.Name = "lstTeeInformation";
+            this.lstTeeInformation.Size = new System.Drawing.Size(120, 139);
+            this.lstTeeInformation.TabIndex = 32;
+            this.lstTeeInformation.SelectedIndexChanged += new System.EventHandler(this.lstTeeInformation_SelectedIndexChanged);
+            // 
+            // btnDeleteTeeInfo
+            // 
+            this.btnDeleteTeeInfo.Location = new System.Drawing.Point(833, 683);
+            this.btnDeleteTeeInfo.Name = "btnDeleteTeeInfo";
+            this.btnDeleteTeeInfo.Size = new System.Drawing.Size(103, 23);
+            this.btnDeleteTeeInfo.TabIndex = 31;
+            this.btnDeleteTeeInfo.Text = "Delete Tee Info";
+            this.btnDeleteTeeInfo.UseVisualStyleBackColor = true;
+            this.btnDeleteTeeInfo.Click += new System.EventHandler(this.btnDeleteTeeInfo_Click);
+            // 
+            // btnUpdateTeeInfo
+            // 
+            this.btnUpdateTeeInfo.Location = new System.Drawing.Point(833, 654);
+            this.btnUpdateTeeInfo.Name = "btnUpdateTeeInfo";
+            this.btnUpdateTeeInfo.Size = new System.Drawing.Size(103, 23);
+            this.btnUpdateTeeInfo.TabIndex = 30;
+            this.btnUpdateTeeInfo.Text = "Update Tee Info";
+            this.btnUpdateTeeInfo.UseVisualStyleBackColor = true;
+            this.btnUpdateTeeInfo.Click += new System.EventHandler(this.btnUpdateTeeInfo_Click);
+            // 
+            // btnAddTeeInfo
+            // 
+            this.btnAddTeeInfo.Location = new System.Drawing.Point(833, 625);
+            this.btnAddTeeInfo.Name = "btnAddTeeInfo";
+            this.btnAddTeeInfo.Size = new System.Drawing.Size(103, 23);
+            this.btnAddTeeInfo.TabIndex = 29;
+            this.btnAddTeeInfo.Text = "Add Tee Info";
+            this.btnAddTeeInfo.UseVisualStyleBackColor = true;
+            this.btnAddTeeInfo.Click += new System.EventHandler(this.btnAddTeeInfo_Click);
+            // 
+            // btnGetTeeInformation
+            // 
+            this.btnGetTeeInformation.Location = new System.Drawing.Point(833, 567);
+            this.btnGetTeeInformation.Name = "btnGetTeeInformation";
+            this.btnGetTeeInformation.Size = new System.Drawing.Size(103, 23);
+            this.btnGetTeeInformation.TabIndex = 28;
+            this.btnGetTeeInformation.Text = "Get Tee Info";
+            this.btnGetTeeInformation.UseVisualStyleBackColor = true;
+            this.btnGetTeeInformation.Click += new System.EventHandler(this.btnGetTeeInformation_Click);
+            // 
+            // txtUniqueID
+            // 
+            this.txtUniqueID.Enabled = false;
+            this.txtUniqueID.Location = new System.Drawing.Point(1067, 538);
+            this.txtUniqueID.Name = "txtUniqueID";
+            this.txtUniqueID.PlaceholderText = "Unique ID";
+            this.txtUniqueID.Size = new System.Drawing.Size(157, 23);
+            this.txtUniqueID.TabIndex = 38;
+            // 
             // frmGolfer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1010, 592);
+            this.ClientSize = new System.Drawing.Size(1237, 718);
+            this.Controls.Add(this.txtUniqueID);
+            this.Controls.Add(this.txtSlope);
+            this.Controls.Add(this.txtRating);
+            this.Controls.Add(this.txtYardage);
+            this.Controls.Add(this.txtTeeName);
+            this.Controls.Add(this.txtTCourseID);
+            this.Controls.Add(this.lstTeeInformation);
+            this.Controls.Add(this.btnDeleteTeeInfo);
+            this.Controls.Add(this.btnUpdateTeeInfo);
+            this.Controls.Add(this.btnAddTeeInfo);
+            this.Controls.Add(this.btnGetTeeInformation);
             this.Controls.Add(this.txtPar);
             this.Controls.Add(this.txtNumTees);
             this.Controls.Add(this.txtCourseName);
@@ -362,6 +483,17 @@ namespace app
         private System.Windows.Forms.Button btnUpdateCourse;
         private System.Windows.Forms.Button btnAddCourse;
         private System.Windows.Forms.Button btnGetCourses;
+        private System.Windows.Forms.TextBox txtSlope;
+        private System.Windows.Forms.TextBox txtRating;
+        private System.Windows.Forms.TextBox txtYardage;
+        private System.Windows.Forms.TextBox txtTeeName;
+        private System.Windows.Forms.TextBox txtTCourseID;
+        private System.Windows.Forms.ListBox lstTeeInformation;
+        private System.Windows.Forms.Button btnDeleteTeeInfo;
+        private System.Windows.Forms.Button btnUpdateTeeInfo;
+        private System.Windows.Forms.Button btnAddTeeInfo;
+        private System.Windows.Forms.Button btnGetTeeInformation;
+        private System.Windows.Forms.TextBox txtUniqueID;
     }
 }
 

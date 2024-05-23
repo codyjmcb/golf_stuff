@@ -64,4 +64,34 @@
             return _courseName;
         }
     }
+
+    public class TeeInformation
+    {
+        public short _uniqueID { get; set; }
+
+        public string _courseID { get; set; }
+
+        public string _teeName { get; set; }
+
+        public int _yardage { get; set; }
+
+        public short _slope { get; set; }
+
+        public decimal _rating { get; set; }
+
+        public TeeInformation(short uniqueID, string courseID, string teeName, int yardage, short slope, decimal rating)
+        {
+            _uniqueID = uniqueID;
+            _courseID = courseID;
+            _teeName = teeName;
+            _yardage = yardage;
+            _slope = slope;
+            _rating = rating;
+        }
+
+        public override string ToString()
+        {
+            return $"{_courseID}:{_teeName}";
+        }
+    }
 }
