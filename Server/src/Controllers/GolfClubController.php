@@ -31,15 +31,15 @@
 		{
 			$headers = getallheaders();
 
-			$golferID = isset($headers['golferID']) ? $headers['golferID'] : null;
+			$uniqueID = isset($headers['uniqueID']) ? $headers['uniqueID'] : null;
 
 			try
 			{
 				$db = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
 				$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-				$stmt = $db->query("SELECT * FROM $this->table WHERE golferID = \"$golferID\"");
-				$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-				return json_encode($rows);
+				$stmt = $db->query("SELECT * FROM $this->table WHERE uniqueID = \"$uniqueID\"");
+				$row = $stmt->fetch(PDO::FETCH_ASSOC);
+				return json_encode($row);
 			}
 			catch (PDOException $e)
 			{
@@ -97,6 +97,7 @@
 			$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 			$query = "UPDATE $this->table SET golferID = \"$golferID\", clubID = \"$clubID\", lie = \"$lie\", make = \"$make\", model = \"$model\" WHERE uniqueID = \"$uniqueID\"";
 			$stmt = $db->prepare($query);
+
 			if($stmt->execute())
 			{
 				return "Success";
@@ -124,6 +125,27 @@
 			else
 			{
 				return "Failure";
+			}
+		}
+
+		public function getGolfClubsForGolfer()
+		{
+			$headers = getallheaders();
+
+			$golferID = isset($headers['golferID']) ? $headers['golferID'] : null;
+
+			try
+			{
+				$db = new PDO("mysql:host=localhost;dbname=$this->database", $this->user, $this->password);
+				$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+				$stmt = $db->query("SELECT * FROM $this->table WHERE golferID = \"$golferID\"");
+				$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+				return json_encode($rows);
+			}
+			catch (PDOException $e)
+			{
+				print "Error!: " . $e->getMessage();
+				die();
 			}
 		}
 	}

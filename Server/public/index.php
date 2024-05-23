@@ -28,6 +28,7 @@
 	$router->add('GET', '/golfcourse/teeinformation', 'TeeInformationController@getTeeInformationForCourse');
 	$router->add('GET', '/golfclubs', 'GolfClubController@getGolfClubs');
 	$router->add('GET', '/golfclub', 'GolfClubController@getGolfClub');
+	$router->add('GET', '/golfer/golfclubs', 'GolfClubController@getGolfClubsForGolfer');
 
 	// POST ROUTES
 	$router->add('POST', '/golfer', 'GolferController@addGolfer');
