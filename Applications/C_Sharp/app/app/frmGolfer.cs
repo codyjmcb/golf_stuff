@@ -304,6 +304,12 @@ namespace app
                 txtCourseName.Text = gc._courseName;
                 txtNumTees.Text = gc._numTees.ToString();
                 txtPar.Text = gc._par.ToString();
+
+                lstTeeInformation.Items.Clear();
+                foreach(TeeInformation t in db_Service.FindTeeInformationForCourse(gc))
+                {
+                    lstTeeInformation.Items.Add(t);
+                }
             }
         }
 

@@ -124,5 +124,10 @@ namespace ServiceBus
         {
             return _teeInformationRepo.Delete(id);
         }
+
+        public List<TeeInformation> FindTeeInformationForCourse(GolfCourse gc)
+        {
+            return (List<TeeInformation>)_teeInformationRepo.FindFor(gc);
+        }
     }
 }

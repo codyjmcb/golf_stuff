@@ -177,11 +177,9 @@ namespace Repositories
 
         public IList<TeeInformation> FindFor(GolfCourse x)
         {
-            throw new NotImplementedException("TeeInformationRepo.FindFor(GolfCourse x)");
-            /*
             HttpWebRequest webRequest;
 
-            webRequest = (HttpWebRequest)WebRequest.Create(ipAddress_teeInformation_Course); //plural form
+            webRequest = (HttpWebRequest)WebRequest.Create(ipAddress_teeInformation_Course);
 
             webRequest.Method = "GET";
             webRequest.Headers.Clear();
@@ -202,7 +200,6 @@ namespace Repositories
                     return parsed;
                 }
             }
-            */
         }
 
         public bool Update(TeeInformation x)
