@@ -7,6 +7,7 @@
 	require_once '../src/Controllers/GolfCourseController.php';
 	require_once '../src/Controllers/TeeInformationController.php';
 	require_once '../src/Controllers/GolfClubController.php';
+	require_once '../src/Controllers/HoleController.php';
 
 	$router = new Router();
 
@@ -29,6 +30,9 @@
 	$router->add('GET', '/golfclubs', 'GolfClubController@getGolfClubs');
 	$router->add('GET', '/golfclub', 'GolfClubController@getGolfClub');
 	$router->add('GET', '/golfer/golfclubs', 'GolfClubController@getGolfClubsForGolfer');
+	$router->add('GET', '/holes', 'HoleController@getHoles');
+	$router->add('GET', '/hole', 'HoleController@getHole');
+	$router->add('GET', '/teeinformation/holes', 'HoleController@getHolesForTee');
 
 	// POST ROUTES
 	$router->add('POST', '/golfer', 'GolferController@addGolfer');
@@ -36,6 +40,7 @@
 	$router->add('POST', '/golfcourse', 'GolfCourseController@addGolfCourse');
 	$router->add('POST', '/teeinformation', 'TeeInformationController@addTeeInformation');
 	$router->add('POST', '/golfclub', 'GolfClubController@addGolfClub');
+	$router->add('POST', '/hole', 'HoleController@addHole');
 
 	// PUT ROUTES
 	$router->add('PUT', '/golfer', 'GolferController@updateGolfer');
@@ -43,6 +48,7 @@
 	$router->add('PUT', '/golfcourse', 'GolfCourseController@updateGolfCourse');
 	$router->add('PUT', '/teeinformation', 'TeeInformationController@updateTeeInformation');
 	$router->add('PUT', '/golfclub', 'GolfClubController@updateGolfClub');
+	$router->add('PUT', '/hole', 'HoleController@updateHole');
 
 	// DELETE ROUTES
 	$router->add('DELETE', '/golfer', 'GolferController@deleteGolfer');
@@ -50,6 +56,7 @@
 	$router->add('DELETE', '/golfcourse', 'GolfCourseController@deleteGolfCourse');
 	$router->add('DELETE', '/teeinformation', 'TeeInformationController@deleteTeeInformation');
 	$router->add('DELETE', '/golfclub', 'GolfClubController@deleteGolfClub');
+	$router->add('DELETE', '/hole', 'HoleController@deleteHole');
 
 	// run the router
 	$method = $_SERVER['REQUEST_METHOD'];

@@ -124,4 +124,34 @@
             return $"{_golferID}: {_make} {_model}";
         }
     }
+
+    public class Hole
+    {
+        public int _uniqueID { get; set; }
+
+        public short _teeID { get; set; }
+
+        public byte _holeNumber { get; set; }
+
+        public short _yardage { get; set; }
+
+        public byte _par { get; set; }
+
+        public byte _handicapRating { get; set; }
+
+        public Hole(int uniqueID, short teeID, byte holeNumber, short yardage, byte par, byte handicapRating)
+        {
+            _uniqueID = uniqueID;
+            _teeID = teeID;
+            _holeNumber = holeNumber;
+            _yardage = yardage;
+            _par = par;
+            _handicapRating = handicapRating;
+        }
+
+        public override string ToString()
+        {
+            return $"{_teeID}:{_holeNumber}";
+        }
+    }
 }

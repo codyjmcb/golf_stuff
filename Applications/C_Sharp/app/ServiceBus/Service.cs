@@ -12,13 +12,15 @@ namespace ServiceBus
         IRepository<GolfCourse> _courseRepo;
         IItemsForRepository<TeeInformation, GolfCourse> _teeInformationRepo;
         IItemsForRepository<GolfClub, Golfer> _golfClubRepo;
+        IItemsForRepository<Hole, TeeInformation> _holeRepo;
 
         public Service(
             IRepository<Golfer> golferRepo,
             IRepository<ClubType> clubTypeRepo,
             IRepository<GolfCourse> courseRepo,
             IItemsForRepository<TeeInformation, GolfCourse> teeInformationRepo,
-            IItemsForRepository<GolfClub, Golfer> golfClubRepo
+            IItemsForRepository<GolfClub, Golfer> golfClubRepo,
+            IItemsForRepository<Hole, TeeInformation> holeRepo
             )
         {
             _golferRepo = golferRepo;
@@ -26,6 +28,7 @@ namespace ServiceBus
             _courseRepo = courseRepo;
             _teeInformationRepo = teeInformationRepo;
             _golfClubRepo = golfClubRepo;
+            _holeRepo = holeRepo;
         }
 
         public List<Golfer> FindAllGolfers()
@@ -161,6 +164,36 @@ namespace ServiceBus
         public List<GolfClub> FindGolfClubsForGolfer(Golfer g)
         {
             return (List<GolfClub>)_golfClubRepo.FindFor(g);
+        }
+
+        public List<Hole> FindAllHoles()
+        {
+            return (List<Hole>)_holeRepo.FindAll();
+        }
+
+        public Hole FindHole(string id)
+        {
+            return _holeRepo.Find(id);
+        }
+
+        public bool UpdateHole(Hole x)
+        {
+            return _holeRepo.Update(x);
+        }
+
+        public bool AddHole(Hole x)
+        {
+            return _holeRepo.Add(x);
+        }
+
+        public bool DeleteHole(string id)
+        {
+            return _holeRepo.Delete(id);
+        }
+
+        public List<Hole> FindHolesForTee(TeeInformation x)
+        {
+            return (List<Hole>)_holeRepo.FindFor(x);
         }
     }
 }
