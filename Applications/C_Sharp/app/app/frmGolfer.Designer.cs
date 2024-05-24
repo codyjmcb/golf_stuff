@@ -77,6 +77,17 @@ namespace app
             this.btnUpdateGolfClub = new System.Windows.Forms.Button();
             this.btnAddGolfClub = new System.Windows.Forms.Button();
             this.btnGetGolfClubs = new System.Windows.Forms.Button();
+            this.txtHoleUniqueId = new System.Windows.Forms.TextBox();
+            this.txtHoleRating = new System.Windows.Forms.TextBox();
+            this.txtHolePar = new System.Windows.Forms.TextBox();
+            this.txtHoleYardage = new System.Windows.Forms.TextBox();
+            this.txtHoleNumber = new System.Windows.Forms.TextBox();
+            this.txtHoleTeeId = new System.Windows.Forms.TextBox();
+            this.lstHoles = new System.Windows.Forms.ListBox();
+            this.btnDeleteHole = new System.Windows.Forms.Button();
+            this.btnUpdateHole = new System.Windows.Forms.Button();
+            this.btnAddHole = new System.Windows.Forms.Button();
+            this.btnGetHoles = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnGetAllGolfers
@@ -516,11 +527,121 @@ namespace app
             this.btnGetGolfClubs.UseVisualStyleBackColor = true;
             this.btnGetGolfClubs.Click += new System.EventHandler(this.btnGetGolfClubs_Click);
             // 
+            // txtHoleUniqueId
+            // 
+            this.txtHoleUniqueId.Enabled = false;
+            this.txtHoleUniqueId.Location = new System.Drawing.Point(1067, 268);
+            this.txtHoleUniqueId.Name = "txtHoleUniqueId";
+            this.txtHoleUniqueId.PlaceholderText = "Unique ID";
+            this.txtHoleUniqueId.Size = new System.Drawing.Size(157, 23);
+            this.txtHoleUniqueId.TabIndex = 60;
+            // 
+            // txtHoleRating
+            // 
+            this.txtHoleRating.Location = new System.Drawing.Point(1068, 413);
+            this.txtHoleRating.Name = "txtHoleRating";
+            this.txtHoleRating.PlaceholderText = "Rating";
+            this.txtHoleRating.Size = new System.Drawing.Size(157, 23);
+            this.txtHoleRating.TabIndex = 59;
+            // 
+            // txtHolePar
+            // 
+            this.txtHolePar.Location = new System.Drawing.Point(1068, 384);
+            this.txtHolePar.Name = "txtHolePar";
+            this.txtHolePar.PlaceholderText = "Par";
+            this.txtHolePar.Size = new System.Drawing.Size(157, 23);
+            this.txtHolePar.TabIndex = 58;
+            // 
+            // txtHoleYardage
+            // 
+            this.txtHoleYardage.Location = new System.Drawing.Point(1068, 355);
+            this.txtHoleYardage.Name = "txtHoleYardage";
+            this.txtHoleYardage.PlaceholderText = "Yardage";
+            this.txtHoleYardage.Size = new System.Drawing.Size(157, 23);
+            this.txtHoleYardage.TabIndex = 57;
+            // 
+            // txtHoleNumber
+            // 
+            this.txtHoleNumber.Location = new System.Drawing.Point(1068, 326);
+            this.txtHoleNumber.Name = "txtHoleNumber";
+            this.txtHoleNumber.PlaceholderText = "Hole Number";
+            this.txtHoleNumber.Size = new System.Drawing.Size(157, 23);
+            this.txtHoleNumber.TabIndex = 56;
+            // 
+            // txtHoleTeeId
+            // 
+            this.txtHoleTeeId.Location = new System.Drawing.Point(1069, 297);
+            this.txtHoleTeeId.Name = "txtHoleTeeId";
+            this.txtHoleTeeId.PlaceholderText = "Tee ID";
+            this.txtHoleTeeId.Size = new System.Drawing.Size(157, 23);
+            this.txtHoleTeeId.TabIndex = 55;
+            // 
+            // lstHoles
+            // 
+            this.lstHoles.FormattingEnabled = true;
+            this.lstHoles.ItemHeight = 15;
+            this.lstHoles.Location = new System.Drawing.Point(942, 297);
+            this.lstHoles.Name = "lstHoles";
+            this.lstHoles.Size = new System.Drawing.Size(120, 139);
+            this.lstHoles.TabIndex = 54;
+            this.lstHoles.SelectedIndexChanged += new System.EventHandler(this.lstHoles_SelectedIndexChanged);
+            // 
+            // btnDeleteHole
+            // 
+            this.btnDeleteHole.Location = new System.Drawing.Point(833, 413);
+            this.btnDeleteHole.Name = "btnDeleteHole";
+            this.btnDeleteHole.Size = new System.Drawing.Size(103, 23);
+            this.btnDeleteHole.TabIndex = 53;
+            this.btnDeleteHole.Text = "Delete Hole";
+            this.btnDeleteHole.UseVisualStyleBackColor = true;
+            this.btnDeleteHole.Click += new System.EventHandler(this.btnDeleteHole_Click);
+            // 
+            // btnUpdateHole
+            // 
+            this.btnUpdateHole.Location = new System.Drawing.Point(833, 384);
+            this.btnUpdateHole.Name = "btnUpdateHole";
+            this.btnUpdateHole.Size = new System.Drawing.Size(103, 23);
+            this.btnUpdateHole.TabIndex = 52;
+            this.btnUpdateHole.Text = "Update Hole";
+            this.btnUpdateHole.UseVisualStyleBackColor = true;
+            this.btnUpdateHole.Click += new System.EventHandler(this.btnUpdateHole_Click);
+            // 
+            // btnAddHole
+            // 
+            this.btnAddHole.Location = new System.Drawing.Point(833, 355);
+            this.btnAddHole.Name = "btnAddHole";
+            this.btnAddHole.Size = new System.Drawing.Size(103, 23);
+            this.btnAddHole.TabIndex = 51;
+            this.btnAddHole.Text = "Add Hole";
+            this.btnAddHole.UseVisualStyleBackColor = true;
+            this.btnAddHole.Click += new System.EventHandler(this.btnAddHole_Click);
+            // 
+            // btnGetHoles
+            // 
+            this.btnGetHoles.Location = new System.Drawing.Point(833, 297);
+            this.btnGetHoles.Name = "btnGetHoles";
+            this.btnGetHoles.Size = new System.Drawing.Size(103, 23);
+            this.btnGetHoles.TabIndex = 50;
+            this.btnGetHoles.Text = "Get Holes";
+            this.btnGetHoles.UseVisualStyleBackColor = true;
+            this.btnGetHoles.Click += new System.EventHandler(this.btnGetHoles_Click);
+            // 
             // frmGolfer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1237, 718);
+            this.Controls.Add(this.txtHoleUniqueId);
+            this.Controls.Add(this.txtHoleRating);
+            this.Controls.Add(this.txtHolePar);
+            this.Controls.Add(this.txtHoleYardage);
+            this.Controls.Add(this.txtHoleNumber);
+            this.Controls.Add(this.txtHoleTeeId);
+            this.Controls.Add(this.lstHoles);
+            this.Controls.Add(this.btnDeleteHole);
+            this.Controls.Add(this.btnUpdateHole);
+            this.Controls.Add(this.btnAddHole);
+            this.Controls.Add(this.btnGetHoles);
             this.Controls.Add(this.txtGolfClubUniqueId);
             this.Controls.Add(this.txtGolfClubModel);
             this.Controls.Add(this.txtGolfClubMake);
@@ -626,6 +747,17 @@ namespace app
         private System.Windows.Forms.Button btnUpdateGolfClub;
         private System.Windows.Forms.Button btnAddGolfClub;
         private System.Windows.Forms.Button btnGetGolfClubs;
+        private System.Windows.Forms.TextBox txtHoleUniqueId;
+        private System.Windows.Forms.TextBox txtHoleRating;
+        private System.Windows.Forms.TextBox txtHolePar;
+        private System.Windows.Forms.TextBox txtHoleYardage;
+        private System.Windows.Forms.TextBox txtHoleNumber;
+        private System.Windows.Forms.TextBox txtHoleTeeId;
+        private System.Windows.Forms.ListBox lstHoles;
+        private System.Windows.Forms.Button btnDeleteHole;
+        private System.Windows.Forms.Button btnUpdateHole;
+        private System.Windows.Forms.Button btnAddHole;
+        private System.Windows.Forms.Button btnGetHoles;
     }
 }
 

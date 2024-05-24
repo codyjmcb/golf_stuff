@@ -21,7 +21,7 @@ namespace app
         {
             InitializeComponent();
 
-            db_Service = new Service(new GolferRepo(), new ClubTypeRepo(), new GolfCourseRepo(), new TeeInformationRepo(), new GolfClubRepo());
+            db_Service = new Service(new GolferRepo(), new ClubTypeRepo(), new GolfCourseRepo(), new TeeInformationRepo(), new GolfClubRepo(), new HoleRepo());
         }
 
         private void btnAddGolfer_Click(object sender, EventArgs e)
@@ -419,6 +419,12 @@ namespace app
                 txtYardage.Text = t._yardage.ToString();
                 txtRating.Text = t._rating.ToString();
                 txtSlope.Text = t._slope.ToString();
+
+                lstHoles.Items.Clear();
+                foreach(Hole h in db_Service.FindHolesForTee(t))
+                {
+                    lstHoles.Items.Add(h);
+                }
             }
         }
 
@@ -506,6 +512,79 @@ namespace app
                 txtGolfClubLie.Text = gc._lie.ToString();
                 txtGolfClubMake.Text = gc._make;
                 txtGolfClubModel.Text = gc._model;
+            }
+        }
+
+        private void btnGetHoles_Click(object sender, EventArgs e)
+        {
+            lstHoles.Items.Clear();
+            foreach(Hole h in db_Service.FindAllHoles())
+            {
+                lstHoles.Items.Add(h);
+            }
+        }
+
+        private void btnAddHole_Click(object sender, EventArgs e)
+        {
+            if(db_Service.AddHole(new Hole(
+                int.Parse(txtHoleTeeId.Text),
+                short.Parse(txtHoleTeeId.Text),
+                byte.Parse(txtHoleNumber.Text),
+                short.Parse(txtHoleYardage.Text),
+                byte.Parse(txtHolePar.Text),
+                byte.Parse(txtHoleRating.Text)
+                )))
+            {
+                MessageBox.Show("Success");
+            }
+            else
+            {
+                MessageBox.Show("Failed");
+            }
+        }
+
+        private void btnUpdateHole_Click(object sender, EventArgs e)
+        {
+            if (db_Service.UpdateHole(new Hole(
+                int.Parse(txtHoleUniqueId.Text),
+                short.Parse(txtHoleTeeId.Text),
+                byte.Parse(txtHoleNumber.Text),
+                short.Parse(txtHoleYardage.Text),
+                byte.Parse(txtHolePar.Text),
+                byte.Parse(txtHoleRating.Text)
+                )))
+            {
+                MessageBox.Show("Success");
+            }
+            else
+            {
+                MessageBox.Show("Failed");
+            }
+        }
+
+        private void btnDeleteHole_Click(object sender, EventArgs e)
+        {
+            if(db_Service.DeleteHole(txtHoleUniqueId.Text))
+            {
+                MessageBox.Show("Success");
+            }
+            else
+            {
+                MessageBox.Show("Failed");
+            }
+        }
+
+        private void lstHoles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(lstHoles.SelectedItems.Count == 1)
+            {
+                Hole h = (Hole)lstHoles.SelectedItem;
+                txtHoleUniqueId.Text = h._uniqueID.ToString();
+                txtHoleTeeId.Text = h._teeID.ToString();
+                txtHoleNumber.Text = h._holeNumber.ToString();
+                txtHoleYardage.Text = h._yardage.ToString();
+                txtHolePar.Text = h._par.ToString();
+                txtHoleRating.Text = h._handicapRating.ToString();
             }
         }
     }
