@@ -89,4 +89,27 @@ NOTES ABOUT THIS DOCUMENT
 	The Foreign Key (clubID) references [CLUB_TYPES].{uniqueID}
 
 
-
+	MySQL >> C# Type mapping
++------------------+----------------+---------------------+------------------------+
+|MySQL Data Type   |C# Data Type    |C# Nullable Data Type| C# Primitive Type      |
++------------------+----------------+---------------------+------------------------+
+|bigint            |Int64           |Nullable<Int64>      |long                    |
+|bit               |Boolean			|Nullable<Boolean>	  |bool					   |
+|char			   |Char			|Nullable<Char>		  |char					   |
+|date              |DateTime		|Nullable<DateTime>   |                        |
+|datetime          |DateTime		|Nullable<DateTime>   |                        |
+|decimal           |Decimal			|Nullable<Decimal>    |decimal                 |
+|float             |Single			|Nullable<Single>     |float                   |
+|int               |Int32			|Nullable<Int32>      |int                     |
+|longtext          |String			|String               |string                  |
+|mediumint         |Int32			|Nullable<Int32>      |int                     |
+|mediumtext		   |String			|String               |string                  |
+|smallint		   |Int16			|Nullable<Int16>	  |short                   |
+|text			   |String			|String               |string                  |
+|time			   |DateTime		|Nullable<DateTime>	  |                        |
+|timestamp	  	   |DateTime		|Nullable<DateTime>	  |                        |
+|tinyint           |byte			|byte                 |                        |
+|tinytext          |String			|String               |string                  |
+|varbinary         |byte[]			|byte[]	              |                        |
+|varchar           |String			|String               |string                  |
++------------------+----------------+---------------------+------------------------+
